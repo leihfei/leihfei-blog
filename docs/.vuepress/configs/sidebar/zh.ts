@@ -6,7 +6,7 @@ export const sidebarZh: SidebarConfig = {
 			text: '算法基础',
 			collapsible: true,
 			children: [
-				'/algorithm/basic/数组',
+				'/algorithm/basic/算法和数据结构入门',
 				'/algorithm/basic/链表',
 				'/algorithm/basic/堆栈',
 				'/algorithm/basic/队列',
@@ -18,11 +18,10 @@ export const sidebarZh: SidebarConfig = {
 			]
 		},
 		{
-			text: 'Letcode',
+			text: 'interview',
 			collapsible: false,
 			children: [
-				'/algorithm/letcode/1-50',
-				'/algorithm/letcode/51-100',
+				'/algorithm/interview/面试题'
 			]
 		}
 	],

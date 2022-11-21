@@ -11,7 +11,7 @@ export const navbarZh: NavbarConfig = [
 			{
 				text: '算法基础',
 				children: [
-					'/algorithm/basic/数组',
+					'/algorithm/basic/算法和数据结构入门',
 					'/algorithm/basic/链表',
 					'/algorithm/basic/堆栈',
 					'/algorithm/basic/队列',
@@ -23,10 +23,9 @@ export const navbarZh: NavbarConfig = [
 				]
 			},
 			{
-				text: 'Letcode',
+				text: 'interview',
 				children: [
-					'/algorithm/letcode/1-50',
-					'/algorithm/letcode/51-100',
+					'/algorithm/interview/面试题'
 				]
 			}
 		]
