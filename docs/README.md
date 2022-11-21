@@ -7,7 +7,7 @@ actionText: 开始探索之旅 →
 actionLink: /zh/guide/
 features:
 - title: 关于我
-  details: 爱好学习，喜欢技术的码农，希望和大家称为好朋友。
+  details: 爱好学习，喜欢技术的码农，希望和大家成为朋友。
 - title: 学习笔记
   details: 学习总爱忘记，好记性不如烂笔头。
 - title: 生活点点滴滴
