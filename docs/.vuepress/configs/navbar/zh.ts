@@ -12,10 +12,11 @@ export const navbarZh: NavbarConfig = [
 				text: '算法基础',
 				children: [
 					'/algorithm/basic/算法和数据结构入门',
+					'/algorithm/basic/递归与分治',
+					'/algorithm/basic/快速排序',
 					'/algorithm/basic/链表',
 					'/algorithm/basic/堆栈',
 					'/algorithm/basic/队列',
-					'/algorithm/basic/递归与分治',
 					'/algorithm/basic/图',
 					'/algorithm/basic/贪心算法',
 					'/algorithm/basic/位运算',
