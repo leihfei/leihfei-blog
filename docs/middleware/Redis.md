@@ -6125,13 +6125,13 @@ Sentinel就会认为该实例主观下线(**SDown**)
 Sentinel会向同时监控这个主服务器的所有其他Sentinel发送查询命令
 主机的  
 
-```
+```sh
 SENTINEL is-master-down-by-addr <ip> <port> <current_epoch> <runid>  
 ```
 
 其他Sentinel回复  
 
-```
+```sh
 <down_state>< leader_runid >< leader_epoch >  
 ```
 
