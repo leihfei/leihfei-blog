@@ -7137,3 +7137,4 @@ Master1宕机，则Slaver11提升为新的Master1
 3、在Master1中添加Slaver31为从节点
 4、将Slaver31的复制源改为Master1
 5、通过ping包将信息同步到集群的其他节点  
+
