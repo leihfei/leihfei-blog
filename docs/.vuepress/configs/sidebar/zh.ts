@@ -53,14 +53,14 @@ export const sidebarZh: SidebarConfig = {
 	'/middleware/': [
 		{
 			text: 'Redis',
-			collapsible: true,
+			collapsible: false,
 			children: [
 				'/middleware/Redis.md'
 			]
 		},
 		{
 			text:'Mysql',
-			collapsible: true,
+			collapsible: false,
 			children:[
 				'/middleware/Mysql.md'
 			]
