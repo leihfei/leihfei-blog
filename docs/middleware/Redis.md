@@ -6125,11 +6125,15 @@ Sentinel就会认为该实例主观下线(**SDown**)
 Sentinel会向同时监控这个主服务器的所有其他Sentinel发送查询命令
 主机的  
 
-> SENTINEL is-master-down-by-addr <ip> <port> <current_epoch> <runid>  
+```
+SENTINEL is-master-down-by-addr <ip> <port> <current_epoch> <runid>  
+```
 
 其他Sentinel回复  
 
-> <down_state>< leader_runid >< leader_epoch >  
+```
+<down_state>< leader_runid >< leader_epoch >  
+```
 
 判断它们是否也认为主服务器下线。如果达到Sentinel配置中的quorum数量的Sentinel实例都判断主服务器为主观下线，则该主服务器就会被判定为客观下线(**ODown**)。  
 
