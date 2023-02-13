@@ -2,7 +2,7 @@
 
 
 
-# 缓存
+# 第一、缓存
 
 ##  缓存的作用
 
@@ -238,7 +238,7 @@ Write-Through(穿透写模式/直写模式): 应用程序写缓存，缓存写�
 
 
 
-# Redis分布式缓存数据库
+# 第二、Redis分布式缓存数据库
 
 ## Redis简介
 
@@ -465,7 +465,7 @@ private RedisTemplate redisTemplate
 
 
 
-# Redis的数据类型
+# 第三、Redis的数据类型
 
 ## String字符串
 
@@ -756,9 +756,33 @@ stream是redis5.0后新增的数据结构，用于可持久化的消息队列
 
 
 
+## HyperLogLog
+
+HyperLogLog是用来做基数统计的。其可以非常省内存的去统计各种计数，比如注册ip数、每日访问IP数、页面实时UV（PV肯定字符串就搞定了）、在线用户数等在对准确性不是很重要的应用场景。
+
+HyperLogLog的优点是：
+
+在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定的、并且是很小的，
+
+HyperLogLog的缺点:
+
+它是估计基数的算法，所以会有一定误差0.81%。
+
+每个HyperLogLog键只需要花费12KB内存，就可以计算接近264个不同元素的基数。这和计算基数时，元素越多耗费内存就越多的集合形成鲜明对比。
+
+但是，因为 HyperLogLog 只会根据输入元素来计算基数，而不会储存输入元素本身，所以 HyperLogLog 不能像集合那样，返回输入的各个元素即无法知道统计的详细内容。
+
+常见命令如下：
+
+| 命令名称 | 命令格式                                  | 描述                                      |
+| -------- | ----------------------------------------- | ----------------------------------------- |
+| PFADD    | PFADD key element [element ...]           | 添加指定元素到 HyperLogLog 中             |
+| PFCOUNT  | PFCOUNT key [key ...]                     | 返回给定 HyperLogLog 的基数估算值         |
+| PFMERGE  | PFMERGE destkey sourcekey [sourcekey ...] | 将多个 HyperLogLog 合并为一个 HyperLogLog |
 
 
-# Redis扩展功能
+
+# 第四、Redis扩展功能
 
 ## 发布与订阅
 
@@ -1698,7 +1722,7 @@ redis_exporter为Prometheus提供了redis指标的导出，配合Prometheus以�
 
 
 
-# Redis核心原理
+# 第五、Redis核心原理
 
 ## redis持久化
 
@@ -4239,7 +4263,7 @@ processTimeEvents
 
 
 
-# Redis企业实战
+# 第六、Redis企业实战
 
 
 
@@ -5652,7 +5676,7 @@ public void delBigZset(String host, int port, String password, String bigZsetKey
 
 
 
-# Redis 高可用方案
+# 第七、Redis 高可用方案
 
 “高可用性”（High Availability）通常来描述一个系统经过专门的设计，从而减少停工时间，而保持其服务的高度可用性。CAP的A AP模型单机的Redis是无法保证高可用性的，当Redis服务器宕机后，即使在有持久化的机制下也无法保证不丢
 失数据。
