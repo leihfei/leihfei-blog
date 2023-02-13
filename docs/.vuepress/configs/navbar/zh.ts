@@ -59,8 +59,8 @@ export const navbarZh: NavbarConfig = [
 	{
 		text: '中间件',
 		children: [
-			'/middleware/Redis',
-			'/middleware/Mysql',
+			'/middleware/redis/Redis',
+			'/middleware/mysql/Mysql',
 		]
 	},
 ]

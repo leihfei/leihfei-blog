@@ -55,14 +55,16 @@ export const sidebarZh: SidebarConfig = {
 			text: 'Redis',
 			collapsible: false,
 			children: [
-				'/middleware/Redis.md'
+				'/middleware/redis/Redis.md',
+				'/middleware/redis/Redis面试题.md'
 			]
 		},
 		{
 			text:'Mysql',
 			collapsible: false,
 			children:[
-				'/middleware/Mysql.md'
+				'/middleware/mysql/Mysql.md',
+				'/middleware/mysql/Mysql面试题.md'
 			]
 		}
 	]
