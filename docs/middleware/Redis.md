@@ -4267,7 +4267,7 @@ processTimeEvents
 
 
 
-#### 架构设计
+### 架构设计
 
 #### 组件选择/多级
 
@@ -4329,7 +4329,7 @@ server {
 
 作为Mybatis的二级缓存使用
 
-##### 缓存大小
+#### 缓存大小
 
 GuavaCache的缓存设置方式
 
@@ -4458,9 +4458,9 @@ grafana/prometheus以及redis_exporter
 - 数据量不大，可以在项目启动的时候进行自动加载预热
 - 数据量大： 利用定时任务刷新缓存，将数据库的数据刷新到缓存中
 
-#### 缓存问题
+### 缓存问题
 
-##### 缓存穿透
+#### 缓存穿透
 
 一般的缓存系统，都是按照key去缓存查询，如果不存在对应的value，就应该去后盾系统查询（比如数据库等）
 
@@ -4486,7 +4486,7 @@ grafana/prometheus以及redis_exporter
 
 不用循环------>比较位置 省时间
 
-##### 缓存雪崩
+#### 缓存雪崩
 
 当花奴才能服务器重启或者大量缓存key在某一个时间段失效，这样在失效的时候，也会给后端系统（DB）带来巨大压力
 
@@ -4500,7 +4500,7 @@ grafana/prometheus以及redis_exporter
 
 
 
-##### 缓存击穿
+#### 缓存击穿
 
 对于一些设置了过期时间的key，如果这些key可能在某个时间点被超高并发的访问，是一种非常“热”的数据，这个时候，需要考虑一个问题：缓存被“击穿”的问题，这个和缓存雪崩的区别是这里针对某一个key缓存，雪崩是很多key。
 
@@ -4516,7 +4516,7 @@ grafana/prometheus以及redis_exporter
 
    当数据库发生更新数据时，缓存中的数据不一定会及时更新，这样就会噪声缓存中的和数据库中数据不一致，应用从缓存中读取到的数据是脏数据，但是我们可以采取延时双删策略处理。
 
-##### 数据不一致
+#### 数据不一致
 
 缓存和DB的数据不一致的根源： 数据源不一样
 
@@ -4556,7 +4556,7 @@ grafana/prometheus以及redis_exporter
 
 
 
-##### 数据并发竞争
+#### 数据并发竞争
 
 这里的并发是指多个redis的client同时set同一个key引发的并发问题
 
@@ -4598,7 +4598,7 @@ grafana/prometheus以及redis_exporter
 
 
 
-##### Hot Key
+#### Hot Key
 
 当有大量的请求访问redis的某个key时，由于流量集中达到了网诺上限，从而导致redis的服务器宕机，造成缓存击穿，接下来对这个key的访问直接访问数据库造成数据库崩溃，或者访问数据库回填redis再访问redis，继续崩溃。
 
@@ -4632,7 +4632,7 @@ grafana/prometheus以及redis_exporter
 
 
 
-##### Big Key
+#### Big Key
 
 大key是指存储的value非常大
 
@@ -4701,16 +4701,16 @@ grafana/prometheus以及redis_exporter
 
    
 
-#### 缓存与数据库一致性
+### 缓存与数据库一致性
 
-##### 缓存更新策略
+#### 缓存更新策略
 
 - 利用Redis的缓存淘汰策略被动更新LRU，LFU
 - 利用TTl被动更新
 - 在更新数据时主动更新（先更新数据库在删除缓存---延时双删）
 - 异步更新：定时任务，不能保证数据一致性，不击穿到DB
 
-##### 不同策略之间的优缺点
+#### 不同策略之间的优缺点
 
 | 策略                            | 一致性 | 维护成本 |
 | ------------------------------- | ------ | -------- |
@@ -4720,7 +4720,7 @@ grafana/prometheus以及redis_exporter
 
 
 
-##### 与Mybatis整合
+#### 与Mybatis整合
 
 可以使用Redis做Mybatis的二级缓存，在分布式环境下可以使用
 
@@ -4958,9 +4958,9 @@ grafana/prometheus以及redis_exporter
 
 
 
-#### 分布式锁
+### 分布式锁
 
-##### watch
+#### watch
 
 ###### 利用watch实现Redis乐观锁
 
@@ -5027,9 +5027,9 @@ public class Second {
 
 
 
-##### setnx
+#### setnx
 
-###### 实现原理
+##### 实现原理
 
 共享资源互斥
 
@@ -5047,7 +5047,7 @@ synchronized,ReentrantLock
 
 
 
-###### 实现方式
+##### 实现方式
 
 获取锁
 
@@ -5119,7 +5119,7 @@ public static boolean releaseLock(String lockKey, String requestId) {
 }
 ```
 
-###### 存在问题
+##### 存在问题
 
 单机版redis： 无法保证高可用
 
@@ -5129,7 +5129,7 @@ public static boolean releaseLock(String lockKey, String requestId) {
 
 无法续租：超过expireTime后，不能继续使用
 
-###### 本质分析
+##### 本质分析
 
 CAP模型分析
 
@@ -5151,13 +5151,13 @@ Redis集群不能保证数据的随时一致性，只能保证数据的最终一
 
 
 
-##### Redisson分布式锁的使用
+#### Redisson分布式锁的使用
 
 Redisson是假设在redis基础上的一个驻内存数据网格（in-memory data grid)
 
 Redisson是基于NIO的Netty框架上，生产环境使用分布式锁
 
-###### 加入jar包的依赖
+##### 加入jar包的依赖
 
 ```yaml
 <dependency>
@@ -5167,7 +5167,7 @@ Redisson是基于NIO的Netty框架上，生产环境使用分布式锁
 </dependency>
 ```
 
-###### 配置Redisson
+##### 配置Redisson
 
 ```java
 public class RedissonManager {
@@ -5196,7 +5196,7 @@ public class RedissonManager {
 }
 ```
 
-###### **锁的获取和释放**
+##### **锁的获取和释放**
 
 ```java
 public class DistributedRedisLock {
@@ -5225,7 +5225,7 @@ public class DistributedRedisLock {
 }
 ```
 
-###### **业务逻辑中使用分布式锁**
+##### **业务逻辑中使用分布式锁**
 
 ```java
 public String discount() throws IOException{
@@ -5241,7 +5241,7 @@ public String discount() throws IOException{
 }
 ```
 
-###### Redisson分布式锁的实现原理
+##### Redisson分布式锁的实现原理
 
 ![image-20230212171821451](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-redisson%E6%9C%BA%E5%88%B6.png)
 
@@ -5278,7 +5278,7 @@ myLock :{"8743c9c0-0795-4907-87fd-6c719a6b4586:1":1 }
 锁。
 接着会执行“pexpire myLock 30000”命令，设置myLock这个锁key的生存时间是30秒  
 
-###### 锁互斥机制  
+###### 锁互斥机制
 
 那么在这个时候，如果客户端2来尝试加锁，执行了同样的一段lua脚本，会咋样呢？
 很简单，第一个if判断会执行“exists myLock”，发现myLock这个锁key已经存在了。
@@ -5301,7 +5301,7 @@ incrby myLock
 通过这个命令，对客户端1的加锁次数，累加1。数据结构会变成：
 myLock :{"8743c9c0-0795-4907-87fd-6c719a6b4586:1":2 }  
 
-###### 释放锁机制  
+###### 释放锁机制
 
 执行lua脚本如下：  
 
@@ -5422,7 +5422,7 @@ if(redis.lock("RDL",200)){
 
 
 
-#### 分布式集群架构中的session分离
+### 分布式集群架构中的session分离
 
 传统的session是由tomcat自己进行维护和管理，但是对于集群或分布式环境，不同的tomcat管理各自
 的session，很难进行session共享，通过传统的模式进行session共享，会造成session对象在各个
@@ -5432,11 +5432,11 @@ tomcat之间，通过网络和Io进行复制，极大的影响了系统的性能
 
   
 
-#### 阿里Redis使用手册
+### 阿里Redis使用手册
 
 从阿里云redis的开发规范进行简单学习记录
 
-##### 一、 键值设计
+#### 一、 键值设计
 
 1. key名设计
 
@@ -5481,7 +5481,7 @@ bigkey过期时间自动删除问题(例如一个200万的zset设置1小时过�
 控制key的生命周期
 redis不是垃圾桶，建议使用expire设置过期时间(条件允许可以打散过期时间，防止集中过期)，不过期的数据重点关注idletime。  
 
-##### 二、命令使用
+#### 二、命令使用
 
 1. O(N)命令关注N的数量
 
@@ -5520,7 +5520,7 @@ uses should be passed using the KEYS arrayrn"
 
 必要情况下使用monitor命令时，要注意不要长时间使用。  
 
-##### 三、客户端使用
+#### 三、客户端使用
 
 1、避免多个应用使用一个Redis实例
 不相干的业务拆分，公共数据做服务化。
@@ -5560,7 +5560,7 @@ try{
 · volatile-ttl：根据键值对象的ttl属性，删除最近将要过期数据。如果没有，回退到noeviction策略。
 · noeviction：不会剔除任何数据，拒绝所有写入操作并返回客户端错误信息"(error) OOM command not allowed when used memory"，此时Redis只响应读操作。  
 
-##### 四、相关工具
+#### 四、相关工具
 
 1、数据同步
 redis间数据同步可以使用：redis-port
@@ -5570,7 +5570,7 @@ redis大key搜索工具
 内部实现使用monitor，所以建议短时间使用facebook的redis-faina
 阿里云Redis已经在内核层面解决热点key问题  
 
-##### 五、删除bigkey
+#### 五、删除bigkey
 
 1.下面操作可以使用pipeline加速。
 2.redis 4.0已经支持key的异步删除，欢迎使用。  
