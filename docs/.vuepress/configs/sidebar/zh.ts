@@ -41,7 +41,7 @@ export const sidebarZh: SidebarConfig = {
 			children: [
 				'/java/thread/线程八大核心基础.md',
 				'/java/thread/多线程高级笔记.md',
-				'/java/hightlevel/JVM优化.md'
+				'/java/highlevel/JVM优化.md'
 			]
 		},
 		{
