@@ -36,13 +36,15 @@ export const sidebarZh: SidebarConfig = {
 			]
 		},
 		{
-			text: '多线程',
+			text: 'Java高级',
 			collapsible: true,
 			children: [
 				'/java/thread/线程八大核心基础.md',
-				'/java/thread/多线程高级笔记.md'
+				'/java/thread/多线程高级笔记.md',
+				'/java/hightlevel/JVM优化.md'
 			]
-		}, {
+		},
+		{
 			text: '其他',
 			collapsible: true,
 			children: [

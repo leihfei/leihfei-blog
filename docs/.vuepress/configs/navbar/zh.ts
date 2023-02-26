@@ -42,10 +42,11 @@ export const navbarZh: NavbarConfig = [
 				]
 			},
 			{
-				text: '多线程',
+				text: 'Java高级',
 				children: [
 					'/java/thread/线程八大核心基础',
 					'/java/thread/多线程高级笔记',
+					'/java/hightlevel/JVM优化.md'
 				]
 			},
 			{
