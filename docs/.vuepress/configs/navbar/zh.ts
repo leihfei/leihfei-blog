@@ -46,7 +46,7 @@ export const navbarZh: NavbarConfig = [
 				children: [
 					'/java/thread/线程八大核心基础',
 					'/java/thread/多线程高级笔记',
-					'/java/highlevel/JVM优化.md'
+					'/java/highlevel/JVM优化'
 				]
 			},
 			{
