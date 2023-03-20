@@ -79,7 +79,7 @@ export const navbarZh: NavbarConfig = [
 				text: 'spring',
 				children: [
 					'/middleware/spring/spring相关',
-					'/middleware/mysql/spring-boot.md'
+					'/middleware/spring/spring-boot'
 				]
 			}
 		]

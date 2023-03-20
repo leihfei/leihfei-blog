@@ -73,8 +73,8 @@ export const sidebarZh: SidebarConfig = {
 			text:'spring',
 			collapsible: false,
 			children:[
-				'/middleware/mysql/spring相关.md',
-				'/middleware/mysql/spring-boot.md.md'
+				'/middleware/spring/spring相关.md',
+				'/middleware/spring/spring-boot.md'
 			]
 		},
 	]
