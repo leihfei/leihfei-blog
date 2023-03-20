@@ -73,7 +73,7 @@
 
    常见的反向代理服务器： nginx
 
-   ![image-20221211120849251](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/img%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%B5%81%E7%A8%8B.png)
+   ![image-20221211120849251](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/img%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%B5%81%E7%A8%8B.png)
 
 7. 边缘缓存
 
@@ -83,7 +83,7 @@
 
    CDN的计算关键是有内存存储和分发，现在的云服务商一般都提供CND服务
 
-   ![image-20221211121039657](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgCDN%E5%8E%9F%E7%90%86.png)
+   ![image-20221211121039657](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgCDN%E5%8E%9F%E7%90%86.png)
 
 8. 服务器缓存
 
@@ -137,11 +137,11 @@
 
 读： 先读缓存，没有就读数据库，然后将数据库数据写入缓存，同时返回数据
 
-![image-20221211121848419](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/img%E6%97%81%E8%B7%AF%E6%A8%A1%E5%BC%8F-%E8%AF%BB.png)
+![image-20221211121848419](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/img%E6%97%81%E8%B7%AF%E6%A8%A1%E5%BC%8F-%E8%AF%BB.png)
 
 更新的时候： 先更新数据库，然后再删除缓存
 
-![image-20221211121908431](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/img%E6%97%81%E8%B7%AF%E6%A8%A1%E5%BC%8F%E6%9B%B4%E6%96%B0.png)
+![image-20221211121908431](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/img%E6%97%81%E8%B7%AF%E6%A8%A1%E5%BC%8F%E6%9B%B4%E6%96%B0.png)
 
 为什么删除缓存，而不是更新缓存呢？
 
@@ -190,7 +190,7 @@ Write-Through(穿透写模式/直写模式): 应用程序写缓存，缓存写�
 
 ### 缓存的设计思路
 
-1. 数据的整体流转，哪些地方需要缓存（多层级缓存系统）![image-20221211123213663](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/img%E5%A4%9A%E5%B1%82%E7%BA%A7%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F.png)
+1. 数据的整体流转，哪些地方需要缓存（多层级缓存系统）![image-20221211123213663](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/img%E5%A4%9A%E5%B1%82%E7%BA%A7%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F.png)
 
    这个图表示： 就算是分布式缓存系统出现宕机，还有本地缓存是可以使用，不至于一下死打死DB
 
@@ -271,7 +271,7 @@ Write-Through(穿透写模式/直写模式): 应用程序写缓存，缓存写�
 
   **选择稳定版本来下载，由于Redis不提供windows版本，所以尽量选择linux服务器进行安装**
 
-  ![image-20221211124408601](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis%E4%B8%8B%E8%BD%BD%E9%A1%B5%E9%9D%A2.png)
+  ![image-20221211124408601](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis%E4%B8%8B%E8%BD%BD%E9%A1%B5%E9%9D%A2.png)
 
   在该网站上进行相应的下载即可，这个redis网站也是有不断更新的，可能不同时间的页面不一样，但是版本这些信息都是一样的，非标准版，标准版等
 
@@ -625,7 +625,7 @@ Redis hash是一个string类型的field和value的映射表，它提供了字段
 
 每个hash可以存储2^32-1键值对(40亿)
 
-![image-20221227215756613](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-hash%E7%BB%93%E6%9E%84.png)
+![image-20221227215756613](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-hash%E7%BB%93%E6%9E%84.png)
 
 命令如下：
 
@@ -688,13 +688,13 @@ geo是redis用来处理地理位置的，在redis3.2中正式使用，主要是�
 
 在x轴和y轴上将十进制数转化为二进制数，采用x轴和y轴对应的二进制数依次交叉后得到一个为六位数编码。把数字从小到大依次连起来的曲线称为Z阶曲线，Z阶曲线就是把多维转换成一维的一种方法。
 
-![image-20221228203038382](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgZ%E9%98%B6%E6%9B%B2%E7%BA%BF.png)
+![image-20221228203038382](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgZ%E9%98%B6%E6%9B%B2%E7%BA%BF.png)
 
 #### Base32编码
 
 Base32编码这种数据编码机制，主要用来把二进制数据编码成可见的字符串，其编码规则是：任意给定一个二进制数据，以5个位（bit)为一组进行切分（base64以6个位为一组），对切分而成的每一组进行编码得到一个可见字符。base32编码表字符集中的字符总数为32个（0-9，b-a,去掉a,i,l,o),这也是Base32名字的由来。
 
-![image-20221228203330668](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgBase32%E7%BC%96%E7%A0%81.png)
+![image-20221228203330668](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgBase32%E7%BC%96%E7%A0%81.png)
 
 #### geohash算法
 
@@ -790,7 +790,7 @@ Redis提供了发布订阅功能，可以用于消息的传输
 
 Redis的发布订阅机制包括三部分，publisher，subscribe和Channel
 
-![image-20221228204824733](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgRedis%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B.png)
+![image-20221228204824733](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgRedis%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B.png)
 
 发布者和订阅者都是redis客户端，Channel则是redis的服务器端
 
@@ -1020,7 +1020,7 @@ unwatch: 清除监视key
 
 事务原理图：
 
-![image-20221228214302844](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%BA%8B%E5%8A%A1%E5%8E%9F%E7%90%86.png)
+![image-20221228214302844](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%BA%8B%E5%8A%A1%E5%8E%9F%E7%90%86.png)
 
 
 
@@ -1115,7 +1115,7 @@ OK
 
 如图所示：
 
-![image-20221228214631533](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%BA%8B%E5%8A%A1%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20221228214631533](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%BA%8B%E5%8A%A1%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 源码示意：
 
@@ -1166,7 +1166,7 @@ RedisClient向服务器端发送exec命令，服务器判断RedisClient的flag�
 
 示意图：
 
-![image-20221228214947105](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis_%E4%BA%8B%E5%8A%A1watch%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20221228214947105](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis_%E4%BA%8B%E5%8A%A1watch%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 ```c
 typedef struct redisDb{
@@ -1638,7 +1638,7 @@ redis客户端通过MONITOR命令可以将自己变成一个监视器，实时�
 
 此时，当其他的客户端向服务器发送一条命令时，服务器除了会处理这个命令之外，还会将这个命令的请求的信息发给所有的监视器
 
-![image-20221231194251138](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis%E7%9B%91%E8%A7%86%E5%99%A8%E5%8E%9F%E7%90%86%E5%9B%BE.png)
+![image-20221231194251138](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis%E7%9B%91%E8%A7%86%E5%99%A8%E5%8E%9F%E7%90%86%E5%9B%BE.png)
 
 redis客户端1,客户端登录，操作命令
 
@@ -1716,7 +1716,7 @@ Grafana 是一个开箱即用的可视化工具，具有功能齐全的度量仪
 Prometheus是一个开源的服务监控系统，它通过HTTP协议从远程的机器收集数据并存储在本地的时序数据库上。
 redis_exporter为Prometheus提供了redis指标的导出，配合Prometheus以及grafana进行可视化及监控。  
 
-![image-20221231195034095](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-grafana%E7%9B%91%E6%8E%A7.png)
+![image-20221231195034095](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-grafana%E7%9B%91%E6%8E%A7.png)
 
 
 
@@ -1811,7 +1811,7 @@ Background saving started
 
 #### RDB执行原理
 
-![image-20221231210816712](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgRDB%E5%8E%9F%E7%90%86%E5%9B%BE.png)
+![image-20221231210816712](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgRDB%E5%8E%9F%E7%90%86%E5%9B%BE.png)
 
 
 
@@ -1828,7 +1828,7 @@ Background saving started
 
 
 
-![image-20221231211352314](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgRDB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png)
+![image-20221231211352314](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgRDB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png)
 
 1. 头部5个固定为“REDIS”字符串
 
@@ -1850,7 +1850,7 @@ Background saving started
    8. 结束标致
    9. 校验和
 
-![image-20221231212619415](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgrdb%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9.png)
+![image-20221231212619415](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgrdb%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9.png)
 
 
 
@@ -2007,7 +2007,7 @@ Redis不希望aof重写造成服务器无法处理请求，所以redis决定将a
 
 为了解决这个问题，redis增加了一个aof重写缓存，这个缓存在fork子进程之后开始启用，redis主进程在接收到新的写命令之后，除了会将这个写命令追加到现有的aof文件中，还会追加到这个缓存中。
 
-![image-20221231222836331](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgaof%E9%87%8D%E5%86%99%E6%97%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%86%99aof%E6%83%85%E5%86%B5.png)
+![image-20221231222836331](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgaof%E9%87%8D%E5%86%99%E6%97%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%86%99aof%E6%83%85%E5%86%B5.png)
 
 **重写过程的分析**
 
@@ -2043,7 +2043,7 @@ Redis数据库里的+aof重写过程的命令---->添加到新的aof文件---->�
 
 以上就是整个aof后台重写，也就是bgrewariteaof命令（aof重写）的工作原理。
 
-![image-20221231223628187](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgaof%E9%87%8D%E5%86%99%E5%8E%9F%E7%90%86%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+![image-20221231223628187](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgaof%E9%87%8D%E5%86%99%E5%8E%9F%E7%90%86%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 
 
@@ -2078,7 +2078,7 @@ RDB和AOF都各有优缺点，Redis4.0开始支持rdb和aof的混合持久化，
 
 开启混合持久化： **aof-use-rdb-preamble yes**
 
-![image-20230101095522829](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-aof%E6%96%87%E4%BB%B6.png)
+![image-20230101095522829](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-aof%E6%96%87%E4%BB%B6.png)
 
 可以看到该aof文件是rdb文件的头和aof格式的内容，在加载时，首先会识别aof文件是否以REDIS开头，如果是就按照RDB文件加载，加载完了RDB后继续按照AOF格式加载剩余部分。
 
@@ -2099,7 +2099,7 @@ Redis读取aof文件并还原数据库状态详细步骤如下：
 
 整个过程如下：
 
-![image-20230101100819048](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgreds-%E8%BD%BD%E5%85%A5aof%E6%96%87%E4%BB%B6.png)
+![image-20230101100819048](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgreds-%E8%BD%BD%E5%85%A5aof%E6%96%87%E4%BB%B6.png)
 
 
 
@@ -2142,7 +2142,7 @@ Redis数据量存储过大，性能突然下降，fork 时间过长 阻塞主进
 
 redis作为key-value存储系统，数据结构如下：
 
-![image-20230101102843708](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png)
+![image-20230101102843708](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png)
 
 redis没有表的概念，redis实例所对应的db以编号区分，db本身就是key的命名空间
 
@@ -2263,7 +2263,7 @@ c语言: 字符数组"\0"
 
 Redis使用了SDS(simple dynamic string),用于存储字符串和整型数据
 
-![image-20230101105716199](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-sds.png)
+![image-20230101105716199](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-sds.png)
 
 ```c
 struct sdshdr{
@@ -2312,7 +2312,7 @@ SDS主要应用在： 存储字符串和整型数据、存储key、aof缓冲区�
 
 如：
 
-![image-20230101110822097](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8-%E5%AE%9E%E4%BE%8B1.png)
+![image-20230101110822097](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8-%E5%AE%9E%E4%BE%8B1.png)
 
 查找元素9，按照原来的思维我们只需要从前往后遍历一次，就可以寻找到元素
 
@@ -2324,19 +2324,19 @@ SDS主要应用在： 存储字符串和整型数据、存储key、aof缓冲区�
 
 遍历5次可以找到元素9（红色的线为查找路径）
 
-![image-20230101111045807](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8-%E7%AC%AC%E4%B8%80%E5%B1%82.png)
+![image-20230101111045807](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8-%E7%AC%AC%E4%B8%80%E5%B1%82.png)
 
 第二次分层：
 
 遍历4次找到元素9
 
-![image-20230101111115150](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%88%86%E5%B1%82.png)
+![image-20230101111115150](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%88%86%E5%B1%82.png)
 
 第三次分层：
 
 遍历4次找到元素9
 
-![image-20230101111144832](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8-%E7%AC%AC%E4%B8%89%E6%AC%A1%E5%88%86%E5%B1%82.png)
+![image-20230101111144832](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8-%E7%AC%AC%E4%B8%89%E6%AC%A1%E5%88%86%E5%B1%82.png)
 
 这种数据结构，就是跳跃表，具有二分查找的功能。
 
@@ -2402,7 +2402,7 @@ typedef struct zskiplist{
 
 完整的跳跃表结构体：
 
-![image-20230101111757194](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8%E7%BB%93%E6%9E%84%E4%BD%93.png)
+![image-20230101111757194](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E8%B7%B3%E8%B7%83%E8%A1%A8%E7%BB%93%E6%9E%84%E4%BD%93.png)
 
 跳跃表的优势：
 
@@ -2459,7 +2459,7 @@ redis-server: MurmurHash
 
 Redis存取值的原理：
 
-![image-20230101115359257](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%AD%97%E5%85%B8%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.png)
+![image-20230101115359257](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%AD%97%E5%85%B8%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.png)
 
 
 
@@ -2467,7 +2467,7 @@ Redis存取值的原理：
 
 redis字典实现包括： 字典(dict)、Hash表(dictht)、Hash表节点(dictEntry)
 
-![image-20230101115647201](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis%E5%AD%97%E5%85%B8%E5%AE%9E%E7%8E%B0.png)
+![image-20230101115647201](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis%E5%AD%97%E5%85%B8%E5%AE%9E%E7%8E%B0.png)
 
 ###### Hash表
 
@@ -2504,7 +2504,7 @@ v字段是一个联合体，存储键值对中的值
 
 next指向下一个hash节点，用于解决hash冲突
 
-![image-20230101120045605](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgimage-20230101120045605.png)
+![image-20230101120045605](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgimage-20230101120045605.png)
 
 ###### dict字典
 
@@ -2547,7 +2547,7 @@ redis字典除了主数据库的k-v数据存储之外，还可以用于：散列
 
 完整的redis字段数据结构：
 
-![image-20230101120325867](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%AE%8C%E6%95%B4%E7%9A%84%E5%AD%97%E5%85%B8%E7%BB%93%E6%9E%84.png)
+![image-20230101120325867](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%AE%8C%E6%95%B4%E7%9A%84%E5%AD%97%E5%85%B8%E7%BB%93%E6%9E%84.png)
 
 
 
@@ -2601,7 +2601,7 @@ redis字典除了主数据库的k-v数据存储之外，还可以用于：散列
 
 是一个字节数组，可以包含多个节点（entry),每个节点可以保存一个字节数组或一个整数。结构如下：
 
-![image-20230211093757630](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8%E7%BB%93%E6%9E%84.png)
+![image-20230211093757630](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8%E7%BB%93%E6%9E%84.png)
 
 
 
@@ -2707,7 +2707,7 @@ typedef struct intset{
 
 ###### 双向列表(addlist)
 
-![image-20230211094958973](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%8F%8C%E5%90%91%E5%88%97%E8%A1%A8.png)
+![image-20230211094958973](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%8F%8C%E5%90%91%E5%88%97%E8%A1%A8.png)
 
 双向列表的优势：
 
@@ -2729,7 +2729,7 @@ typedef struct intset{
 
 quicklist是一个双向链表，链表中的每个节点是一个ziplist结构。quicklist中的每个节点ziplist都能存储多个元素。
 
-![image-20230211095429421](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%BF%AB%E9%80%9F%E5%88%97%E8%A1%A8.png)
+![image-20230211095429421](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%BF%AB%E9%80%9F%E5%88%97%E8%A1%A8.png)
 
 quicklist的结构定义如下：
 
@@ -2789,7 +2789,7 @@ typedef struct quicklistLZF {
 
 stream： 主要由消息、生产者、消费者和消费组组成
 
-![image-20230211095917457](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E6%B5%81%E5%AF%B9%E8%B1%A1.png)
+![image-20230211095917457](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E6%B5%81%E5%AF%B9%E8%B1%A1.png)
 
 redis stream的底层主要使用了listpack(紧凑列表)和Rax树(基数树)
 
@@ -2799,7 +2799,7 @@ listpack表示一个字符串列表的序列化，listpack可存储用于字符�
 
 结构图如下：
 
-![image-20230211100058556](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-listpack%E5%9B%BE.png)
+![image-20230211100058556](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-listpack%E5%9B%BE.png)
 
 
 
@@ -2809,13 +2809,13 @@ listpack表示一个字符串列表的序列化，listpack可存储用于字符�
 
 rax树是一个有序字典树(基数树Radix Tree)，按照key的字典序排列，支持快速定位、插入和删除操作
 
-如图所示：![image-20230211100123344](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-rax%E6%A0%91.png)
+如图所示：![image-20230211100123344](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-rax%E6%A0%91.png)
 
 
 
 Rax被用在Redis Stream结构里面用于存储消息队列，在stream里面消息id的前缀是时间戳+序号，这样可以被理解为时间序消息。使用Rax结构进行存储可以快速的根据消息的ID定位到具体的消息，然后继续遍历指定的消息之后的所有消息。
 
-![image-20230211100140485](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-rax%E6%A0%91%E7%BB%93%E7%BB%93%E6%9E%84.png)
+![image-20230211100140485](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-rax%E6%A0%91%E7%BB%93%E7%BB%93%E6%9E%84.png)
 
 应用场景：stream的底层实现
 
@@ -3184,23 +3184,23 @@ LRU(Least recently used)最近最少使用，算法根据数据的历史访问�
 
 1.假设我们使用哈希链表来缓存用户信息，目前缓存了4个用户，这4个用户是按照时间顺序依次从链表右端插入的。  
 
-![image-20230211110436113](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgimage-20230211110436113.png)
+![image-20230211110436113](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgimage-20230211110436113.png)
 
 2.此时，业务方访问用户5，由于哈希链表中没有用户5的数据，我们从数据库中读取出来，插入到缓存当中。这时候，链表中最右端是最新访问到的用户5，最左端是最近最少访问的用户1。  
 
-![image-20230211110529480](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgLRU-02.png)
+![image-20230211110529480](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgLRU-02.png)
 
 3.接下来，业务方访问用户2，哈希链表中存在用户2的数据，我们怎么做呢？我们把用户2从它的前驱节点和后继节点之间移除，重新插入到链表最右端。这时候，链表中最右端变成了最新访问到的用户2，最左端仍然是最近最少访问的用户1。 
 
-![image-20230211110618948](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgRedis-LRU03.png)
+![image-20230211110618948](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgRedis-LRU03.png)
 
 4.接下来，业务方请求修改用户4的信息。同样道理，我们把用户4从原来的位置移动到链表最右侧，并把用户信息的值更新。这时候，链表中最右端是最新访问到的用户4，最左端仍然是最近最少访问的用户1。  
 
-![image-20230211110700541](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-lru04.png)
+![image-20230211110700541](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-lru04.png)
 
  5.业务访问用户6，用户6在缓存里没有，需要插入到哈希链表。假设这时候缓存容量已经达到上限，必须先删除最近最少访问的数据，那么位于哈希链表最左端的用户1就会被删除掉，然后再把用户6插入到最右端。  
 
-![image-20230211110737294](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-lru05.png)
+![image-20230211110737294](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-lru05.png)
 
 Redis的LRU数据淘汰机制
 
@@ -3297,7 +3297,7 @@ Redis是单进程单线程
 
 Redis协议位于TCP层之上，即客户端和Redis实例保持双工的连接
 
-![image-20230211113538623](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgimage-20230211113538623.png)
+![image-20230211113538623](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgimage-20230211113538623.png)
 
 ###### 串行的请求响应模式(ping-pong)
 
@@ -3307,7 +3307,7 @@ Redis协议位于TCP层之上，即客户端和Redis实例保持双工的连接
 
 客户端发送请求，服务端响应，客户端收到响应后，再发起第二个请求，服务端再次响应
 
-![image-20230211113728570](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%B2%E8%A1%8C%E5%8C%96%E5%93%8D%E5%BA%94%E6%A8%A1%E5%BC%8F.png)
+![image-20230211113728570](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%B2%E8%A1%8C%E5%8C%96%E5%93%8D%E5%BA%94%E6%A8%A1%E5%BC%8F.png)
 
 telnet和redis-cli发出的命令，都属于这种模式
 
@@ -3323,7 +3323,7 @@ telnet和redis-cli发出的命令，都属于这种模式
 
 请求响应交叉进行，不会混淆(TCP双工)
 
-![image-20230211113859899](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-pipeline%E5%93%8D%E5%BA%94%E6%A8%A1%E5%BC%8F.png)
+![image-20230211113859899](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-pipeline%E5%93%8D%E5%BA%94%E6%A8%A1%E5%BC%8F.png)
 
 - pipline的作用是将一批命令进行打包，然后发送给服务器，服务器执行完毕之后按顺讯打包返回
 - 通过皮皮里呢，一次pipline(n条命令) = 一次网络请求+n次命令时间
@@ -3438,7 +3438,7 @@ exists name
 
 整个流程包括： 服务器启动监听、接收命令请求并解析、执行命令请求、返回命令回复等
 
-![image-20230211115745901](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)
+![image-20230211115745901](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)
 
 ###### server启动监听socket
 
@@ -3478,7 +3478,7 @@ redis-server为每个连接（socket） 创建一个client对象
 
 解析成功后调用processCommand方法执行命令，如图：
 
-![image-20230211120123363](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E8%A7%A3%E6%9E%90%E5%91%BD%E4%BB%A4%E5%90%8E%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png)
+![image-20230211120123363](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E8%A7%A3%E6%9E%90%E5%91%BD%E4%BB%A4%E5%90%8E%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png)
 
 
 
@@ -3644,11 +3644,11 @@ Reator模式是事件驱动的
 
 这个service handler会同步的将输入请求(Event)多路复用的分发给响应的Request Handler
 
-![image-20230211122107665](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-reator-pattern.png)
+![image-20230211122107665](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-reator-pattern.png)
 
 Reactor模式结构如下：
 
-![image-20230211122629850](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgimage-20230211122629850.png)
+![image-20230211122629850](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgimage-20230211122629850.png)
 
 Handler: I/O操作的基本文件句柄，在linux下就是fd(文件描述符)
 
@@ -3660,7 +3660,7 @@ Event Handler: 事件处理接口，这里需要Concrete Event Handler来事件�
 
 Concrete Event Handler: 真实的事件处理器，通常都绑定了一个Handler,可以对可读事件进行读取或可写事件写入操作
 
-![image-20230211122608996](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgimage-20230211122608996.png)
+![image-20230211122608996](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgimage-20230211122608996.png)
 
 主程序向事件分派器(Reactor)注册要监听的事件
 
@@ -3788,7 +3788,7 @@ struct kevent {
 
 在redis中，对于文件事件的处理采用了Reactor模型。采用的是epoll的实现方式。
 
-![image-20230211160307614](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-epool%E5%88%86%E6%B4%BE%E5%99%A8.png)
+![image-20230211160307614](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-epool%E5%88%86%E6%B4%BE%E5%99%A8.png)
 
 Redis在主循环中统一系统文件事件和时间事件，信号事件则由专门的handler来处理
 
@@ -3986,7 +3986,7 @@ aeEventLoop是整个事件驱动的和兴，Redis自己的事件处理机制
 
 不断地循环处理着就绪的文件时间和到期的时间事件
 
-![image-20230211163237018](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgimage-20230211163237018.png)
+![image-20230211163237018](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgimage-20230211163237018.png)
 
 ```c
 typedef struct aeEventLoop {
@@ -4474,11 +4474,11 @@ grafana/prometheus以及redis_exporter
 
 - 使用布隆过滤器，在缓存之前加一层布隆过滤器，在查询的时候先去布隆过滤器查询key是否存在，如果不存在就直接返回，存在继续查缓存和DB
 
-  ![image-20230212152127557](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E7%BC%93%E5%AD%98.png)
+  ![image-20230212152127557](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E7%BC%93%E5%AD%98.png)
 
 布隆过滤器(bloom filter)是1970年布隆提出，实际是一个很长的二进制向量和一系列随机hash映射函数
 
-![image-20230212152305516](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-bloom-filter%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212152305516](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-bloom-filter%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 布隆过滤器原理： 当一个元素被加入到集合时，通过k个hash函数将这个元素映射成一个数组中的k个点，把他们设置为1，检索时，我们只要看看这些点是不是都是1就（大约）知道集合中有没有它了，如果这些点有任何一个0，则被检索的一定不在，如果元素都是1，则元素有可能存在。
 
@@ -4570,7 +4570,7 @@ grafana/prometheus以及redis_exporter
 
 加锁的目的就是为了把并行改为串行，从而避免资源竞争
 
-![image-20230212153958188](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212153958188](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 **2.Redis分布式锁的实现**
 
@@ -4602,7 +4602,7 @@ grafana/prometheus以及redis_exporter
 
 当有大量的请求访问redis的某个key时，由于流量集中达到了网诺上限，从而导致redis的服务器宕机，造成缓存击穿，接下来对这个key的访问直接访问数据库造成数据库崩溃，或者访问数据库回填redis再访问redis，继续崩溃。
 
-![image-20230212154714740](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212154714740](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 如何发现热key:
 
@@ -4612,7 +4612,7 @@ grafana/prometheus以及redis_exporter
 4. 利用redis自带的命令，monitor，hotkeys，但是执行缓慢（不要使用）
 5. 利用基于大数据领域的流式计算来进行实时数据访问次数统计，比如storm,spark,streaming,flink这些技术都可以，发现热点数据后写入到zk中
 
-![image-20230212154946246](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E6%B5%81%E5%BC%8F%E8%AE%A1%E7%AE%97%E7%BB%9F%E8%AE%A1%E7%83%ADkey.png)
+![image-20230212154946246](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E6%B5%81%E5%BC%8F%E8%AE%A1%E7%AE%97%E7%BB%9F%E8%AE%A1%E7%83%ADkey.png)
 
 
 
@@ -5125,7 +5125,7 @@ public static boolean releaseLock(String lockKey, String requestId) {
 
 主从redis： 无法保证数据的强一致性，在主机宕机时会造成数据的重复获得。
 
-![image-20230212163651714](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E4%B8%BB%E4%BB%8E%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98.png)
+![image-20230212163651714](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E4%B8%BB%E4%BB%8E%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98.png)
 
 无法续租：超过expireTime后，不能继续使用
 
@@ -5243,7 +5243,7 @@ public String discount() throws IOException{
 
 ##### Redisson分布式锁的实现原理
 
-![image-20230212171821451](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-redisson%E6%9C%BA%E5%88%B6.png)
+![image-20230212171821451](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-redisson%E6%9C%BA%E5%88%B6.png)
 
 ###### 加锁机制
 
@@ -5373,14 +5373,14 @@ redis的Subscribe，能唤醒其他订阅解锁消息的客户端线程申请锁
 
 - 防止库存超卖
 
-  ![image-20230212172703338](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/img%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8.png)
+  ![image-20230212172703338](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/img%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8.png)
 
 订单1下单前会先查看库存，库存为10，所以下单5本可以成功；
 订单2下单前会先查看库存，库存为10，所以下单8本可以成功；
 订单1和订单2 同时操作，共下单13本，但库存只有10本，显然库存不够了，这种情况称为库存超卖。
 可以采用分布式锁解决这个问题。  
 
-![image-20230212172746105](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/img%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B.png)
+![image-20230212172746105](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/img%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B.png)
 
 订单1和订单2都从Redis中获得分布式锁(setnx)，谁能获得锁谁进行下单操作，这样就把订单系统下单
 的顺序串行化了，就不会出现超卖的情况了。伪码如下：  
@@ -5406,7 +5406,7 @@ if(redis.lock("RDL",200)){
 
 - 基于zk的临时节点实现分布式锁
 
-  ![image-20230212172934458](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgzk%E4%B8%B4%E6%97%B6%E8%8A%82%E7%82%B9%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+  ![image-20230212172934458](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgzk%E4%B8%B4%E6%97%B6%E8%8A%82%E7%82%B9%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 - 基于etcd实现  
 
@@ -5688,11 +5688,11 @@ public void delBigZset(String host, int port, String password, String bigZsetKey
 
 Redis支持主从复制功能，可以通过执行slaveof（Redis5以后改成replicaof）或者在配置文件中设置slaveof(Redis5以后改成replicaof)来开启复制功能 
 
-![image-20230212180941599](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%BB%E4%BB%8E%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212180941599](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%BB%E4%BB%8E%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
-![image-20230212181013646](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%80%E4%B8%BB%E4%B8%80%E4%BB%8E.png)
+![image-20230212181013646](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%80%E4%B8%BB%E4%B8%80%E4%BB%8E.png)
 
-![image-20230212181035589](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%80%E4%B8%BB%E5%A4%9A%E4%BB%8E.png)
+![image-20230212181035589](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%80%E4%B8%BB%E5%A4%9A%E4%BB%8E.png)
 
 
 
@@ -5752,11 +5752,11 @@ Struct redisServer{
 
 slaver与master建立socket连接slaver关联文件事件处理器该处理器接收RDB文件（全量复制）、接收Master传播来的写命令（**增量复制**）  
 
-![image-20230212181447841](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%BB%E4%BB%8E%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E5%85%B3%E7%B3%BB.png)
+![image-20230212181447841](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%BB%E4%BB%8E%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E5%85%B3%E7%B3%BB.png)
 
 主服务器accept从服务器Socket连接后，创建相应的客户端状态。相当于从服务器是主服务器的Client端。  
 
-![image-20230212181535405](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%BB%8E%E4%B8%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5.png)
+![image-20230212181535405](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%BB%8E%E4%B8%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5.png)
 
 ###### 发送ping命令
 
@@ -5770,7 +5770,7 @@ Master的响应：
 2、返回错误，说明Master不正常
 3、timeout，说明网络超时  
 
-![image-20230212181713192](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%BB%E4%BB%8E%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5pingpong.png)
+![image-20230212181713192](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%BB%E4%BB%8E%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5pingpong.png)
 
 ###### 权限验证
 
@@ -5779,13 +5779,13 @@ Master的响应：
 主设置密码(requirepass!=""),从需要设置密码(masterauth=主的requirepass的值)
 或者从通过auth命令向主发送密码  
 
-![image-20230212181840109](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%BB%E4%BB%8E%E9%AA%8C%E8%AF%81%E5%AF%86%E7%A0%81.png)
+![image-20230212181840109](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%BB%E4%BB%8E%E9%AA%8C%E8%AF%81%E5%AF%86%E7%A0%81.png)
 
 ###### 发送端口信息
 
 在身份验证步骤之后，从服务器将执行命令REPLCONF listening-port ，向主服务器发送从服务器的监听端口号。  
 
-![image-20230212182037052](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%BB%E4%BB%8E%E5%8F%91%E9%80%81%E7%AB%AF%E5%8F%A3%E4%BF%A1%E6%81%AF.png)
+![image-20230212182037052](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%BB%E4%BB%8E%E5%8F%91%E9%80%81%E7%AB%AF%E5%8F%A3%E4%BF%A1%E6%81%AF.png)
 
 ###### 同步数据
 
@@ -5814,7 +5814,7 @@ Redis的同步功能分为同步(sync)和命令传播(command propagate)。
 3. 从服务器清空之前数据并执行解释RDB文件
 4. 保持数据一致（还需要命令传播过程才能保持一致）  
 
-![image-20230212182301331](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%90%8C%E6%AD%A5%E6%93%8D%E4%BD%9C%E7%9A%84%E5%8A%A8%E4%BD%9C.png)
+![image-20230212182301331](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%90%8C%E6%AD%A5%E6%93%8D%E4%BD%9C%E7%9A%84%E5%8A%A8%E4%BD%9C.png)
 
 2）命令传播操作：  
 
@@ -5839,7 +5839,7 @@ Redis 2.8以后
 
 - 断线重连有可能触发**全量同步**也有可能是**增量同步**（ master 判断 runid 是否一致）。 
 
-  ![image-20230212182525019](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E8%A7%A6%E5%8F%91%E5%85%A8%E9%87%8F%E6%88%96%E5%A2%9E%E9%87%8F%E5%90%8C%E6%AD%A5%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+  ![image-20230212182525019](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E8%A7%A6%E5%8F%91%E5%85%A8%E9%87%8F%E6%88%96%E5%A2%9E%E9%87%8F%E5%90%8C%E6%AD%A5%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 - 除此之外的情况都是增量同步。   
 
@@ -5851,7 +5851,7 @@ Redis 的全量同步过程主要分三个阶段：
 - **同步写缓冲阶段**：Master向slave同步存储在缓存区的写操作命令
 - **同步增量阶段**：Master向slave同步写操作命令
 
-![image-20230212183849394](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5%E6%B5%81%E7%A8%8B.png)
+![image-20230212183849394](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5%E6%B5%81%E7%A8%8B.png)
 
 **增量同步**
 
@@ -5895,7 +5895,7 @@ replconf ack <replication_offset>
 
 #### 部署方案
 
-![image-20230212204438712](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E5%93%A8%E5%85%B5%E6%90%AD%E5%BB%BA%E6%A8%A1%E5%BC%8F.png)
+![image-20230212204438712](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E5%93%A8%E5%85%B5%E6%90%AD%E5%BB%BA%E6%A8%A1%E5%BC%8F.png)
 
 #### 搭建配置
 
@@ -6050,7 +6050,7 @@ Sentinel实例启动后
 命令连接：用于向主服务器发送命令，并接收响应；
 订阅连接：用于订阅主服务器的—sentinel—:hello频道。  
 
-![image-20230212204815460](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-sentinel%E9%80%9A%E8%AE%AF.png)
+![image-20230212204815460](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-sentinel%E9%80%9A%E8%AE%AF.png)
 
 
 
@@ -6085,7 +6085,7 @@ repl_backlog_histlen:1048576
 
 当Sentinel发现主服务器有新的从服务器出现时，Sentinel还会向从服务器建立命令连接和订阅连接。在命令连接建立之后，Sentinel还是默认10s一次，向从服务器发送info命令，并记录从服务器的信息  
 
-![image-20230212204932146](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-sentinel%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B.png)
+![image-20230212204932146](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-sentinel%E8%AE%A2%E9%98%85%E6%A8%A1%E5%9E%8B.png)
 
 ```sh
 # Server
@@ -6296,7 +6296,7 @@ N:Redis实例个数(Redis主机)
 
 ##### 部署方案
 
-![image-20230212210635193](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-client%E5%88%86%E5%8C%BA%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212210635193](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-client%E5%88%86%E5%8C%BA%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 
 
@@ -6332,7 +6332,7 @@ Redis实例=1844213068%3
 
 普通hash是对主机数量取模，而一致性hash是对2^32（4 294 967 296）取模。我们把2^32想象成一个圆，就像钟表一样，钟表的圆可以理解成由60个点组成的圆，而此处我们把这个圆想象成由2^32个点组成的圆，示意图如下：
 
-![image-20230212210913725](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%80%E8%87%B4%E6%80%A7hash%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212210913725](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%80%E8%87%B4%E6%80%A7hash%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
   圆环的正上方的点代表0，0点右侧的第一个点代表1，以此类推，2、3、4、5、6……直到2^32-1,也就是说0点左侧的第一个点代表2^32-1 。我们把这个由2的32次方个点组成的圆环称为**hash环**。  
 
@@ -6340,7 +6340,7 @@ Redis实例=1844213068%3
 
 通过上述公式算出的结果一定是一个0到2^32-1之间的一个整数，我们就用算出的这个整数，代表服务器A、服务器B、服务器C，既然这个整数肯定处于0到2^32-1之间，那么，上图中的hash环上必定有一个点与这个整数对应，也就是服务器A、服务器B、服务C就可以映射到这个环上，如下图：  
 
-![image-20230212211044616](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-hash%E7%8E%AF%E7%A4%BA%E6%84%8F%E5%9B%BE%E6%9C%8D%E5%8A%A1%E5%99%A8.png)
+![image-20230212211044616](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-hash%E7%8E%AF%E7%A4%BA%E6%84%8F%E5%9B%BE%E6%9C%8D%E5%8A%A1%E5%99%A8.png)
 
 
 
@@ -6348,18 +6348,18 @@ Redis实例=1844213068%3
 hash（key） % 2^32
 映射后的示意图如下，下图中的橘黄色圆形表示数据  
 
-![image-20230212211121284](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%80%E8%87%B4%E6%80%A7hash%E8%AE%A1%E7%AE%97%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212211121284](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%80%E8%87%B4%E6%80%A7hash%E8%AE%A1%E7%AE%97%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 现在服务器与数据都被映射到了hash环上，上图中的数据将会被缓存到服务器A上，因为从数据的位置开始，沿顺时针方向遇到的第一个服务器就是A服务器，所以，上图中的数据将会被缓存到服务器A上。
 如图：  
 
-![image-20230212211152608](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%80%E8%87%B4%E6%80%A7hash%E8%AE%A1%E7%AE%97%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212211152608](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%80%E8%87%B4%E6%80%A7hash%E8%AE%A1%E7%AE%97%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 
 
 将缓存服务器与被缓存对象都映射到hash环上以后，从被缓存对象的位置出发，沿**顺时针方向**遇到的**第一个服务器**，就是当前对象将要缓存于的服务器，由于被缓存对象与服务器hash后的值是固定的，所以，在服务器不变的情况下，数据必定会被缓存到固定的服务器上，那么，当下次想要访问这个数据时，只要再次使用相同的算法进行计算，即可算出这个数据被缓存在哪个服务器上，直接去对应的服务器查找对应的数据即可。多条数据存储如下：  
 
-![image-20230212211256123](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-%E4%B8%80%E8%87%B4%E6%80%A7hash%E5%AF%BB%E6%89%BE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212211256123](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-%E4%B8%80%E8%87%B4%E6%80%A7hash%E5%AF%BB%E6%89%BE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 ##### 优点
 
@@ -6369,11 +6369,11 @@ hash（key） % 2^32
 
 在介绍一致性哈希的概念时，我们理想化的将3台服务器均匀的映射到了hash环上。也就是说数据的范围是2^32/N。但实际情况往往不是这样的。有可能某个服务器的数据会很多，某个服务器的数据会很少，造成服务器性能不平均。这种现象称为hash环偏移。  
 
-![image-20230212211507093](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-hash%E7%8E%AF%E5%81%8F%E7%A7%BB.png)
+![image-20230212211507093](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-hash%E7%8E%AF%E5%81%8F%E7%A7%BB.png)
 
 理论上我们可以通过增加服务器的方式来减少偏移，但这样成本较高，所以我们可以采用虚拟节点的方式，也就是虚拟服务器，如图：  
 
-![image-20230212211534888](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-hash%E7%8E%AF%E5%81%8F%E7%A7%BB%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.png)
+![image-20230212211534888](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-hash%E7%8E%AF%E5%81%8F%E7%A7%BB%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.png)
 
 "虚拟节点"是"实际节点"（实际的物理服务器）在hash环上的复制品,一个实际节点可以对应多个虚拟节点。
 从上图可以看出，A、B、C三台服务器分别虚拟出了一个虚拟节点，当然，如果你需要，也可以虚拟出更多的虚拟节点。引入虚拟节点的概念后，缓存的分布就均衡多了，上图中，1号、3号数据被缓存在服务器A中，5号、4号数据被缓存在服务器B中，6号、2号数据被缓存在服务器C中，如果你还不放心，可以虚拟出更多的虚拟节点，以便减小hash环偏斜所带来的影响，虚拟节点越多，hash环上的节点就越多，缓存被均匀分布的概率就越大。  
@@ -6397,7 +6397,7 @@ hash（key） % 2^32
 
 Codis由豌豆荚于2014年11月开源，基于Go和C开发，是近期涌现的、国人开发的优秀开源软件之一。  
 
-![image-20230212211752685](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-codis%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
+![image-20230212211752685](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-codis%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 Codis 3.x 由以下组件组成：
 
@@ -6432,7 +6432,7 @@ Codis 3.x 由以下组件组成：
 
 Codis 将所有的 key 默认划分为 1024 个槽位(slot)，它首先对客户端传过来的 key 进行 crc32 运算计算哈希值，再将 hash 后的整数值对 1024 这个整数进行取模得到一个余数，这个余数就是对应 key 的槽位。  
 
-![image-20230212212122950](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-codis%E5%88%86%E7%89%87%E5%8E%9F%E7%90%86%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212212122950](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-codis%E5%88%86%E7%89%87%E5%8E%9F%E7%90%86%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 Codis的槽位和分组的映射关系就保存在codis proxy当中。  
 
@@ -6465,7 +6465,7 @@ Redis5.0可以直接使用Redis-cli进行集群的创建和管理
 
 ##### 部署架构
 
-![image-20230212212612524](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-rediscluster%E9%83%A8%E7%BD%B2%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
+![image-20230212212612524](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-rediscluster%E9%83%A8%E7%BD%B2%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 ###### 去中心化
 
@@ -6720,7 +6720,7 @@ Redis Cluster的客户端相比单机Redis 需要具备路由语义的识别能�
 5.客户端接收到节点返回的结果，如果是moved异常，则从moved异常中获取目标节点的信息
 6.客户端向目标节点发送命令，获取命令执行结果  
 
-![image-20230212213744704](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-cluster-moved%E9%87%8D%E5%AE%9A%E5%90%91.png)
+![image-20230212213744704](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-cluster-moved%E9%87%8D%E5%AE%9A%E5%90%91.png)
 
 ```sh
 [root@localhost bin]# ./redis-cli -h 127.0.0.1 -p 7001 -c
@@ -6746,7 +6746,7 @@ OK
 2.客户端向新的节点发送Asking命令给新的节点，然后再次向新节点发送命令
 3.新节点执行命令，把命令执行结果返回给客户端  
 
-![image-20230212213902488](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-cluster-ask%E9%87%8D%E5%AE%9A%E5%90%91.png)
+![image-20230212213902488](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-cluster-ask%E9%87%8D%E5%AE%9A%E5%90%91.png)
 
 moved和ask的区别
 1、moved：槽已确认转移
@@ -6765,7 +6765,7 @@ JedisCluster对目标节点发送命令，目标节点直接响应给JedisCluste
 JedisCluster会重新初始化slot与node节点的缓存关系，然后向新的目标节点发送命令，目标命令执行命令并向JedisCluster响应
 如果命令发送次数超过5次，则抛出异常"Too many cluster redirection!"  
 
-![image-20230212214040102](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-cluster-smart-jediscluster.png)
+![image-20230212214040102](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-cluster-smart-jediscluster.png)
 
 ```java
 JedisPoolConfig config = new JedisPoolConfig();
@@ -6797,7 +6797,7 @@ String value = jcd.get("name:001");
 - 节点迁移状态设置：迁移前标记源/目标节点。
 - key迁移的原子化命令：迁移的具体步骤。  
 
-![image-20230212214237854](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-cluster%E8%BF%81%E7%A7%BB%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230212214237854](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-cluster%E8%BF%81%E7%A7%BB%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 1、向节点B发送状态变更命令，将B的对应slot 状态置为importing。
 2、向节点A发送状态变更命令，将A对应的slot 状态置为migrating。
@@ -7152,7 +7152,7 @@ RedisCluster失效的判定：
 Redis提供了一种方法叫副本漂移，这种方法既能提高集群的可靠性又不用增加太多的从机。
 如图：  
 
-![image-20230212215600978](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgredis-cluster%E5%89%AF%E6%9C%AC%E5%81%8F%E7%A7%BB.png)
+![image-20230212215600978](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/redis/imgredis-cluster%E5%89%AF%E6%9C%AC%E5%81%8F%E7%A7%BB.png)
 
 Master1宕机，则Slaver11提升为新的Master1
 集群检测到新的Master1是单点的（无从机）

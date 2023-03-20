@@ -71,7 +71,15 @@ export const navbarZh: NavbarConfig = [
 				text: 'Mysql',
 				children: [
 					'/middleware/mysql/Mysql',
+					'/middleware/mysql/Mybatis',
 					'/middleware/mysql/Mysql面试题',
+				]
+			},
+			{
+				text: 'spring',
+				children: [
+					'/middleware/spring/spring相关',
+					'/middleware/mysql/spring-boot.md'
 				]
 			}
 		]

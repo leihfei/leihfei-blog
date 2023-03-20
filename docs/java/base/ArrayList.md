@@ -236,7 +236,7 @@ public boolean remove(Object o) {
 
 ### 1. 集合框架
 
-![image-20220211165230193](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/img/image-20220211165230193.png)
+![image-20220211165230193](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/java_base/image-20220211165230193.png)
 
 
 
@@ -393,7 +393,7 @@ ListIterator实现了Iterator接口，并包含其他的功能，比如：增加
 
 
 
-![image-20220211173014489](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/img/image-20220211173014489.png)
+![image-20220211173014489](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/java_base/image-20220211173014489.png)
 
 
 

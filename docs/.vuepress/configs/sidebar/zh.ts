@@ -66,8 +66,16 @@ export const sidebarZh: SidebarConfig = {
 			collapsible: false,
 			children:[
 				'/middleware/mysql/Mysql.md',
+				'/middleware/mysql/Mybatis.md',
 				'/middleware/mysql/Mysql面试题.md'
 			]
-		}
+		},{
+			text:'spring',
+			collapsible: false,
+			children:[
+				'/middleware/mysql/spring相关.md',
+				'/middleware/mysql/spring-boot.md.md'
+			]
+		},
 	]
 }

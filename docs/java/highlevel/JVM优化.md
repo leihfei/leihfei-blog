@@ -10,7 +10,7 @@
 > 根据 JVM 规范，JVM 内存共分为虚拟机栈、堆、方法区、程序计数器、本地方法栈五个部分。	
 > ```
 
-![image-20230216210119127](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jvm%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png)
+![image-20230216210119127](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jvm%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png)
 
 
 
@@ -26,13 +26,13 @@
 
 
 
-![image-20230216210247506](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jvm%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
+![image-20230216210247506](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jvm%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 
 
 ### 2. JVM运行时内存
 
-![image-20230216210326123](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jvm%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98.png)
+![image-20230216210326123](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jvm%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98.png)
 
 Java7和Java8内存结构的不同主要体现在方法区的实现上
 
@@ -41,21 +41,21 @@ HotSpot VM。通常情况下，我们所讲的java虚拟机指的就是HotSpot�
 
  JDK7内存结构
 
-![image-20230216210529615](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jdk7%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
+![image-20230216210529615](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jdk7%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
 
 
 
 JDK8内存结构
 
-![image-20230216210547409](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jdk8%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
+![image-20230216210547409](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jdk8%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
 
 针对JDK8虚拟机的内存详解
 
-![image-20230216210708021](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jdk8%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3.png)
+![image-20230216210708021](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jdk8%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3.png)
 
  JDK7和JDK8内存变化小结
 
-![image-20230216210818836](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jdk78%E5%8F%98%E5%8C%96%E5%B0%8F%E7%BB%93.png)
+![image-20230216210818836](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jdk78%E5%8F%98%E5%8C%96%E5%B0%8F%E7%BB%93.png)
 
 线程私有的：
 
@@ -112,7 +112,7 @@ Java虚拟机栈（Java Virtual Machine Stacks)也是**线程私有**的，即�
 
 虚拟机栈和栈帧的对应关系如下：
 
-![image-20230216212853091](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E6%A0%88%E5%92%8C%E6%A0%88%E5%B8%A7%E7%9A%84%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE.png)
+![image-20230216212853091](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E6%A0%88%E5%92%8C%E6%A0%88%E5%B8%A7%E7%9A%84%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE.png)
 
 
 
@@ -178,7 +178,7 @@ Java虚拟机中，每个栈帧都包含一个指向运行时常量池中该栈�
 
 Java堆（heap）是虚拟机管理的内存中最大的一块区域，堆被**所有线程共享**，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，Java 世界里“几乎”所有的对象实例都在这里分配内存。“几乎”是指从实现角度来看， 随着Java语 言的发展， 现在已经能看到些许迹象表明日后可能出现值类型的支持， 即使只考虑现在， 由于即时编译技术的进步， 尤其是**逃逸分析技术**的日渐强大， **栈上分配、 标量替换优化手段**已经导致一些微妙的变化悄然发生， 所以说Java对象实例都分配在堆上也渐渐变得不是那么绝对了。  
 
-![image-20230216214908076](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
+![image-20230216214908076](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
 
 ###### 堆的特点
 
@@ -213,7 +213,7 @@ JDK7中：
 
 - 永久代
 
-  ![image-20230216220337650](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jdk7%E5%A0%86%E7%A9%BA%E9%97%B4.png)
+  ![image-20230216220337650](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jdk7%E5%A0%86%E7%A9%BA%E9%97%B4.png)
 
 JDK8：
 
@@ -223,7 +223,7 @@ JDK8：
 
   由于方法区的内存不在分配在堆上了，而是在元空间中，所有**永久代就不存在了**
 
-![image-20230216220407104](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jdk8%E5%A0%86%E7%A9%BA%E9%97%B4.png)
+![image-20230216220407104](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jdk8%E5%A0%86%E7%A9%BA%E9%97%B4.png)
 
 
 
@@ -245,7 +245,7 @@ Eden空间和另外两个Survivor空间占比分别为8:1:1
 
 在整个JVM的对象的生命历程当中，基本上对象都处于朝生夕死的状态
 
-![image-20230216220924747](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jvm%E5%A0%86%E5%8D%A0%E6%AF%94.png)
+![image-20230216220924747](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jvm%E5%A0%86%E5%8D%A0%E6%AF%94.png)
 
 从图中可以看出：**堆=新生代+老年代**，其中堆大小可以通过参数-Xmx -Xms指定
 
@@ -288,7 +288,7 @@ JVM考虑内存如何分配，在哪儿分配，并且由于内存分配算法�
 
 7. 老年代内存不足时，会再次触发full gc进行对象销毁，如果还是不足，就报OOM异常
 
-![image-20230216221632812](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%88%86%E9%85%8D%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+![image-20230216221632812](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%88%86%E9%85%8D%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 
 
@@ -368,7 +368,7 @@ Java中的堆也是GC的重点工作区域，GC分为两种：一种是部分收
 **存储内容不同：**在原来的永久代划分中，永久代用来存放类的元数据信息、静态变量以及常量池等。**现在类的元信
 息存储在元空间中，静态变量和常量池等并入堆中，相当于原来的永久代中的数据，被元空间和堆内存给瓜分了。**  
 
-![image-20230218104909384](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jvm%E5%85%83%E7%A9%BA%E9%97%B4.png)
+![image-20230218104909384](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jvm%E5%85%83%E7%A9%BA%E9%97%B4.png)
 
 
 
@@ -425,11 +425,11 @@ Java中的堆也是GC的重点工作区域，GC分为两种：一种是部分收
 **元空间、永久代是方法区具体的落地实现。方法区看作是一块独立于Java堆的内存空间，它主要是用来存储所加载
 的类信息的  **
 
-![image-20230218105559110](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png)
+![image-20230218105559110](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png)
 
 创建对象各数据区域的声明:
 
-![image-20230218105634092](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%90%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F.png)
+![image-20230218105634092](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%90%84%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F.png)
 
 **方法区的特点：**
 
@@ -445,7 +445,7 @@ Java中的堆也是GC的重点工作区域，GC分为两种：一种是部分收
 
 方法区的内部结构如下所示：
 
-![image-20230218110038582](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E6%96%B9%E6%B3%95%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84.png)
+![image-20230218110038582](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E6%96%B9%E6%B3%95%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84.png)
 
 类加载器将class文件加载到内存之后，将类的信息存储到方法区中
 
@@ -455,7 +455,7 @@ Java中的堆也是GC的重点工作区域，GC分为两种：一种是部分收
 
 - 运行时常量池
 
-  ![image-20230218110154839](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0.png)
+  ![image-20230218110154839](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0.png)
 
 类型信息：
 
@@ -550,11 +550,11 @@ jinfo -flag MaxMetaspaceSize 进程号 # 查看MaxMetaspaceSize 的最大空间
 
 它们不是一个概念，存放的位置是不同的，一个在字节码中，一个在方法区中
 
-![image-20230218125946064](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%BB%93%E6%9E%84.png)
+![image-20230218125946064](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%BB%93%E6%9E%84.png)
 
 对字节码文件反编译之后，查看常量池相关信息：
 
-![image-20230218130031267](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%AD%97%E8%8A%82%E7%A0%81%E5%B8%B8%E9%87%8F%E6%B1%A0%E4%BF%A1%E6%81%AF.png)
+![image-20230218130031267](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%AD%97%E8%8A%82%E7%A0%81%E5%B8%B8%E9%87%8F%E6%B1%A0%E4%BF%A1%E6%81%AF.png)
 
 要弄清楚方法区的运行时常量池，需要理解字节码中的常量池
 
@@ -564,11 +564,11 @@ jinfo -flag MaxMetaspaceSize 进程号 # 查看MaxMetaspaceSize 的最大空间
 
 常量池表Contant pool table:
 
-![image-20230218130313144](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.png)
+![image-20230218130313144](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.png)
 
 在方法中对常量池表的符号引用：
 
-![image-20230218130346736](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%9A%84%E5%BC%95%E7%94%A8.png)
+![image-20230218130346736](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%9A%84%E5%BC%95%E7%94%A8.png)
 
 **为什么需要常量池？**
 
@@ -582,11 +582,11 @@ Direct Memory直接内存，并不是虚拟机运行时数据区的一部分
 
 在jdk1.4中加入了NIO(New Input/Output)类，引入了一个基于通道和缓存区的I/O方式，它可以使用Native函数库直接分配堆外内存，然后通过一个存储在Java堆里面的DirectByteBuffer对象作为这个内存的引用进行操作，这样能在一些场景中显著提高性能，避免了数据在Java堆和内存中来回赋值数据。
 
-![image-20230218130710235](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%E5%BC%95%E7%94%A8%E5%85%B3%E7%B3%BB%E5%9B%BE.png)
+![image-20230218130710235](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%E5%BC%95%E7%94%A8%E5%85%B3%E7%B3%BB%E5%9B%BE.png)
 
 NIO的Buwer提供一个可以直接访问系统物理内存的类——DirectBuwer。DirectBuwer类继承自ByteBuwer，但和普通的ByteBuwer不同。普通的ByteBuwer仍在JVM堆上分配内存，其最大内存受到最大堆内存的 限制。而DirectBuwer直接分配在物理内存中，并不占用堆空间。在访问普通的ByteBuwer时，系统总是会使用一个“内核缓冲区”进行操作。而DirectBuwer所处的位置，就相当于这个“内核缓冲区”。因此，使用DirectBuwer是一种更加接近内存底层的方法，所以它的速度比普通的ByteBuwer更快。  
 
-![image-20230218130813619](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-directBuffer%E7%B1%BB%E5%9B%BE.png)
+![image-20230218130813619](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-directBuffer%E7%B1%BB%E5%9B%BE.png)
 
 通过使用堆外内存，可以带来以下好处：
 
@@ -673,7 +673,7 @@ String::intern()是一个本地方法， 它的作用是如果字符串常量池
 3. ClassLoader只负载class文件的加载，至于是否可以运行，则由Execution Engine决定
 4. 如果调用构造器实例化对象，则对象存储在堆区。
 
-![image-20230219105958255](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
+![image-20230219105958255](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 ##### 1.2 类加载ClassLoader角色
 
@@ -682,7 +682,7 @@ String::intern()是一个本地方法， 它的作用是如果字符串常量池
 2. class file 加载到JVM中，被称为DNA元数据模板。
 3. 在 .class文件 --> JVM --> 最终成为元数据模板，此过程就要一个运输工具（类装载器Class Loader），扮演一个快递员的角色。  
 
-![image-20230219110159452](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-classloader%E8%A7%92%E8%89%B2%E5%AE%9A%E4%BD%8D.png)
+![image-20230219110159452](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-classloader%E8%A7%92%E8%89%B2%E5%AE%9A%E4%BD%8D.png)
 
 ##### 1.3 类加载的执行过程
 
@@ -692,7 +692,7 @@ String::intern()是一个本地方法， 它的作用是如果字符串常量池
 
 类从被加载到虚拟机内存中开始、到卸载出内存，主要的生命周期包括：加载(Loading),验证（Verification）、准备（Preparation）、解析（Resolution）、初始化（Initialization）、使用（Using）和卸载（UnLoading)7个阶段，其中验证、准备、解析这三个阶段统称为连接（Linking），七个阶段顺序如下：
 
-![image-20230219110544714](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9A%847%E4%B8%AA%E9%98%B6%E6%AE%B5.png)
+![image-20230219110544714](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9A%847%E4%B8%AA%E9%98%B6%E6%AE%B5.png)
 
 图中**加载、验证、准备、初始化、卸载**这5个阶段顺序是确定的，类在加载必须按照这个顺序，但是解析阶段不一定：在某些情况下初始化阶段之后在开始，这是为了支持Java语言的运行时绑定（动态绑定）。
 
@@ -825,7 +825,7 @@ public class TestMain{
 
 使用javap反编译一下.class文件：
 
-![image-20230219113258832](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%8F%8D%E7%BC%96%E8%AF%91%E5%90%8E%E7%9A%84%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9.png)
+![image-20230219113258832](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%8F%8D%E7%BC%96%E8%AF%91%E5%90%8E%E7%9A%84%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9.png)
 
 看到Constant Pool也就是常量池中有22项内容，其中带"Utf8"的就是符号引用。比如#2，它的值是"com/xrq/test6/TestMain"，表示的是这个类的全限定名；又比如#5为i，#6为I，它们是一对的，表示变量时Integer（int）类型的，名字叫做i；#6为D、#7为d也是一样，表示一个Double（double）类型的变量，名字为d；\#18、#19表示的都是方法的名字。
 **那其实总而言之，符号引用和我们上面讲的是一样的，是对于类、变量、方法的描述。符号引用和虚拟机的内存布局是没有关系的，引用的目标未必已经加载到内存中了**。  
@@ -940,7 +940,7 @@ b
 
 其中 static 字段和 static 代码块，是属于类的，在类的加载的初始化阶段就已经被执行。类信息会被存放在方法区，在同一个类加载器下，这些信息有一份就够了，所以上面的 static 代码块只会执行一次，它对应的是 方法。  
 
-![image-20230219115709296](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-cinit%E5%92%8Cinit%E5%8C%BA%E5%88%AB%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230219115709296](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-clinit%E5%92%8Cinit%E5%8C%BA%E5%88%AB%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 所以，上面代码的 static 代码块只会执行一次，对象的构造方法执行两次。再加上继承关系的先后原则，不难分析出正确结果。  
 
@@ -971,7 +971,7 @@ init方法的执行时期: 对象的初始化阶段
 
 4、 按照这样的加载器的类型划分，常见的有：引导类加载器BootstrapClassLoader,自定义类加载器（Extension Class Loader、System Class Loader、User-Defined Class Loader)
 
-![image-20230219103402985](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8.png)
+![image-20230219103402985](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8.png)
 
 上图中的类加载器的关系为包含关系而不是继承关系
 
@@ -1008,7 +1008,7 @@ init方法的执行时期: 对象的初始化阶段
 
 ##### 3.1 什么是双亲委派
 
-![image-20230219121537345](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B.png)
+![image-20230219121537345](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B.png)
 
 如图所示
 
@@ -1145,7 +1145,7 @@ return defineClass(name, b, off, len, null);
 
 过程如下：
 
-![image-20230219124629107](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B.png)
+![image-20230219124629107](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B.png)
 
 ##### 4.3 自定义类加载器的实现
 
@@ -1232,19 +1232,19 @@ public class MyClassLoader extends ClassLoader{
 
 ##### 5.1 类的关系图
 
-![image-20230219125512846](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-classloader%E7%B1%BB%E5%9B%BE.png)
+![image-20230219125512846](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-classloader%E7%B1%BB%E5%9B%BE.png)
 
 
 
 关系类图如下：
 
-![image-20230219125550675](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-classloader%E5%85%B3%E7%B3%BB%E7%B1%BB%E5%9B%BE.png)
+![image-20230219125550675](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-classloader%E5%85%B3%E7%B3%BB%E7%B1%BB%E5%9B%BE.png)
 
 
 
 ##### 5.2 Launcher核心类的源码剖析
 
-![image-20230219125651267](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-launcher.png)
+![image-20230219125651267](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-launcher.png)
 
 我们先从启动类说起 ,有一个Launcher类 sun.misc.Launcher;  
 
@@ -1506,7 +1506,7 @@ private static String bootClassPath = System.getProperty("sun.boot.class.path");
 
 ClassLoader类，它是一个抽象类，其后所有的类加载器都继承自ClassLoader（不包括启动类加载器），这里我们主要介绍ClassLoader中几个比较重要的方法。  
 
-![image-20230219130808682](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-classloader%E6%96%B9%E6%B3%95.png)
+![image-20230219130808682](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-classloader%E6%96%B9%E6%B3%95.png)
 
 - loadClass(String)
 
@@ -1644,7 +1644,7 @@ GC的优缺点：
 
 算法基本思路： 通过一系列的称为**GC Roots**的对象作为起始点，从这些节点开始向下搜索，搜索走过的路径称为引用链（Reference Chain），当一个对象到GC Roots没有任何引用链相连（用图论来说，就是从GC Roots到这个对象不可达）时，说明这个对象是不可用的。
 
-![image-20230219181238640](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5.png)
+![image-20230219181238640](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5.png)
 
 在Java语言中，可作为GC Roots的对应包括下面几种：
 
@@ -1662,7 +1662,7 @@ GC的优缺点：
 
 - 反映虚拟机内部情况的JMXBean,JVMTI中注册回调、本地代码缓存等
 
-  ![image-20230219181553516](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-javamemorymodel.png)
+  ![image-20230219181553516](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-javamemorymodel.png)
 
   从上图，reference1,reference2,referece3都是GC Roots,可以看出
 
@@ -1704,7 +1704,7 @@ Java对引用的概念进行扩充，将引用分为四类：
 
 **有必要**：如果这个对象被判定为由必要执行finalize()方法，那么这个对象会被放到一个**F-Queue**队列中，并且稍后由一个虚拟机自动建立的、低调低优先级的Finalizer线程去执行它的fianalize()方法，finalize()方法是对象最后一次逃脱死亡的机会，稍后GC将会F-Queue中的对象进行**第二次小规模**的标记，如果对象要在finalize方法中拯救自己，**只需要与引用链上的任何一个对象建立关联即可，比如把自己（this)赋值给某个类变量或者对象的成员变量**，那么在第二次标记时它将被移出**即将回收**的集合，如果这个时候还是没有被移出，那么就基本真的要被回收了。
 
-![image-20230219183847826](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E7%9C%9F%E7%9A%84%E7%A7%81%E7%BD%91%E9%80%BB%E8%BE%91%E5%9B%BE.png)
+![image-20230219183847826](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E7%9C%9F%E7%9A%84%E7%A7%81%E7%BD%91%E9%80%BB%E8%BE%91%E5%9B%BE.png)
 
 一个对象自我拯救的演示：
 
@@ -1796,7 +1796,7 @@ Finalizer线程去执行它们的finalize() 方法, 这里所说的“执行”�
 
 算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成之后统一回收所有被标记的对象。
 
-![image-20230219192038191](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.png)
+![image-20230219192038191](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.png)
 
 主要有两个问题：
 
@@ -1814,7 +1814,7 @@ Finalizer线程去执行它们的finalize() 方法, 这里所说的“执行”�
 
 为了解决效率问题，复制算法出现了，它将可用的内存容量划分为大小相同的两块，每次使用其中一块，当这块用完了，就将还存活的对象复制到另一块上面，然后将本次这块全部清理干净，这样使得每次是对整个半区进行内存回收，内存分配时也不需要在考虑内存碎片等复杂情况。只要移动堆顶指针，按顺序分配即可。
 
-![image-20230219192706272](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.png)
+![image-20230219192706272](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.png)
 
 算法缺点：
 
@@ -1838,7 +1838,7 @@ Finalizer线程去执行它们的finalize() 方法, 这里所说的“执行”�
 
 标记-清除算法和标记-整理算法本质差异在于前者是一种非移动式的回收算法，而后者是移动式的，是否移动回收后的存活对象是一项优缺点并存的风险决策：
 
-![image-20230219193540306](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95.png)
+![image-20230219193540306](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95.png)
 
 #### 算法总结
 
@@ -1864,25 +1864,25 @@ Finalizer线程去执行它们的finalize() 方法, 这里所说的“执行”�
 
 #### 4.1 垃圾回收器的分类
 
-![image-20230219194639558](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E5%88%86%E7%B1%BB.png)
+![image-20230219194639558](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E5%88%86%E7%B1%BB.png)
 
 ##### 串行垃圾回收（Serial收集）
 
 串行垃圾回收是为单线程环境设计且只使用一个线程进行垃圾回收，会暂停所有的用户线程，不适合交互性强的服务器环境  
 
-![image-20230219194944663](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E4%B8%B2%E8%A1%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.png)
+![image-20230219194944663](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E4%B8%B2%E8%A1%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.png)
 
 ##### 并行垃圾回收（Parallel  ）
 
 多个垃圾收集器线程并行工作，同样会暂停用户线程，适用于科学计算、大数据后台处理等多交互场景。  
 
-![image-20230219195033047](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%B9%B6%E8%A1%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.png)
+![image-20230219195033047](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%B9%B6%E8%A1%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.png)
 
 ##### 并发垃圾回收（CMS）
 
 用户线程和垃圾回收线程同时执行，不一定是并行的，可能是交替执行，可能一边垃圾回收，一边运行应用线程，不需要停顿用户线程，互联网应用程序中经常使用，适用对响应时间有要求的场景。  
 
-![image-20230219195116366](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%B9%B6%E8%A1%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.png)
+![image-20230219195116366](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%B9%B6%E8%A1%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.png)
 
 ##### G1垃圾回收
 
@@ -1894,7 +1894,7 @@ G1垃圾回收器将堆内存分割成不同的区域然后并发地对其进行
 
 根据分代思想，我们有7种主流的垃圾回收器  
 
-![image-20230219195229553](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-7%E7%A7%8D%E4%B8%8D%E5%90%8C%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%BB%84%E5%90%88%E5%85%B3%E7%B3%BB.png)
+![image-20230219195229553](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-7%E7%A7%8D%E4%B8%8D%E5%90%8C%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%BB%84%E5%90%88%E5%85%B3%E7%B3%BB.png)
 
 新生代垃圾收集器：Serial 、 ParNew 、Parallel Scavenge
 老年代垃圾收集器：Serial Old 、 Parallel Old 、CMS
@@ -1904,7 +1904,7 @@ G1垃圾回收器将堆内存分割成不同的区域然后并发地对其进行
 
 垃圾收集器的组合关系  
 
-![image-20230219195324703](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E7%BB%84%E5%90%88%E5%85%B3%E7%B3%BB.png)
+![image-20230219195324703](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E7%BB%84%E5%90%88%E5%85%B3%E7%B3%BB.png)
 
 JDK8中默认使用组合是: Parallel Scavenge GC 、ParallelOld GC  
 
@@ -1929,7 +1929,7 @@ JDK14 移除了 CMS GC
 这个收集器是一个单线程工作的收集器， 但它的“单线 程”的意义并不仅仅是说明它只会使用一个处理器或一条收集线程去完成垃圾收集工作， 更重要的是强 调在它进行垃圾收集时， 必须暂停其他所有工作线程， 直到它收集结束。 “Stop The World”这个词语也 许听起来很酷， 但这项工作是由虚拟机在后台自动发起和自动完成的， 在用户不可知、 不可控的情况 下把用户的正常工作的线程全部停掉， 这对很多应用来说都是不能接受的。
 **示意了Serial/Serial Old收 集器的运行过程  **
 
-![image-20230219195709470](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-serial%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
+![image-20230219195709470](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-serial%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
 
 Serial收集器也并不是只有缺点；Serial收集器由于简单并且高效；
 对于单CPU环境来说，由于Serial收集器没有线程间的交互，专心做垃圾收集自然可以做获得最高的垃圾收集效率
@@ -1943,7 +1943,7 @@ ParNew收集器实质上是Serial收集器的多线程并行版本， 除了同�
 
 **ParNew收集器运行过程**
 
-![image-20230219195914240](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-parnew%E6%94%B6%E9%9B%86%E5%99%A8%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
+![image-20230219195914240](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-parnew%E6%94%B6%E9%9B%86%E5%99%A8%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
 
 ParNew收集器在单CPU服务器上的垃圾收集效率绝对不会比Serial收集器高；但是在多CPU服务器上，效果会明显比Serial好
 使用方式：-XX:+UseParNewGC
@@ -2001,7 +2001,7 @@ Serial Old是Serial收集器的老年代版本， 它同样是一个单线程收
 
 执行流程：
 
-![image-20230219200607187](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-seria%20old%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png)
+![image-20230219200607187](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-seria%20old%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png)
 
 应用场景: 主要用于Client模式  
 
@@ -2022,7 +2022,7 @@ Parallel Old是Parallel Scavenge收集器的老年代版本， 支持多线程�
 
 Parallel Old运行过程：
 
-![image-20230219200841173](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-parallel%20old%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
+![image-20230219200841173](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-parallel%20old%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
 
 应用场景
 JDK1.6及之后用来代替老年代的Serial Old收集器；
@@ -2047,7 +2047,7 @@ CMS（concurrent mark sweep）是以获取最短垃圾收集停顿时间为目�
 
 cms运行示意：
 
-![image-20230219201145281](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-cms%E8%BF%90%E8%A1%8C%E5%9B%BE.png)
+![image-20230219201145281](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-cms%E8%BF%90%E8%A1%8C%E5%9B%BE.png)
 
 CMS整个过程比之前的收集器要复杂,整个过程分为4个阶段即、初始标记 并发标记 、重新标记、并发清除 
 
@@ -2098,7 +2098,7 @@ Garbage First是一款面向服务端应用的垃圾收集器，主要针对配�
 
 G1不再坚持固定大小以及固定数量的 分代区域划分， 而是把连续的Java堆划分为多个独立区域（Region） ， 每一个Region都可以 根据需要， 扮演新生代的Eden空间、 Survivor空间， 或者老年代空间。  
 
-![image-20230219202124738](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-g1%E6%94%B6%E9%9B%86%E5%99%A8region%E5%8C%BA%E5%9F%9F.png)
+![image-20230219202124738](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-g1%E6%94%B6%E9%9B%86%E5%99%A8region%E5%8C%BA%E5%9F%9F.png)
 
 （1）将整个堆空间细分为若干个小的区域。
     ①使用G1收集器时，它将整个Java堆划分成约2048个大小相同的独立Region块，每个Region块大小根据堆空间的实际大小而定，为2的N次幂，即1MB, 2MB, 4MB, 8MB, 16MB,32MB。
@@ -2121,23 +2121,23 @@ G1提供了两种GC模式，Young GC和Mixed GC，两种均是完全Stop The Wor
 
 G1收集示意图：
 
-![image-20230219202736737](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-g1%E6%94%B6%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE.png) 
+![image-20230219202736737](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-g1%E6%94%B6%E9%9B%86%E7%A4%BA%E6%84%8F%E5%9B%BE.png) 
 
 > G1 YoungGC
 
 堆分为大约2000个区域。最小大小为1Mb，最大大小为32Mb。蓝色区域保存老年代对象，绿色区域保存年轻对象。  
 
-![image-20230219202937633](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-g1%20younggc.png)
+![image-20230219202937633](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-g1%20younggc.png)
 
 > 执行YoungGC
 
 将存活的对象（即复制或移动）到一个或多个幸存者区域。如果满足老化阈值，则某些对象将被提升到老年代区域。  
 
-![image-20230219203022762](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-g1%20%E6%89%A7%E8%A1%8C%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230219203022762](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-g1%20%E6%89%A7%E8%A1%8C%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 > G1的年轻GC结束
 
-![image-20230219203111286](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-g1%E7%9A%84%E5%B9%B4%E8%BD%BBgc%E7%BB%93%E6%9D%9F.png)
+![image-20230219203111286](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-g1%E7%9A%84%E5%B9%B4%E8%BD%BBgc%E7%BB%93%E6%9D%9F.png)
 
 最近升级的对象以深蓝色显示。幸存者区域为绿色。
 总而言之，关于G1的年轻一代，可以说以下几点：
@@ -2156,31 +2156,31 @@ G1 Mix GC
 
 存活的对象的初始标记背负在年轻的垃圾收集器上。在日志中，此标记为 GC pause (young)(inital-mark) 。  
 
-![image-20230219203250035](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-mixgc.png)
+![image-20230219203250035](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-mixgc.png)
 
 **并发标记阶段（Concurrent Marking）  **
 
 如果找到空白区域（如“ X”所示），则在Remark阶段将其立即删除。另外，计算确定活跃度的信息。  
 
-![image-20230219203400071](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-g1%20mix.png)
+![image-20230219203400071](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-g1%20mix.png)
 
 **最终标记阶段（Remark，STW）  **
 
 空区域将被删除并回收。现在可以计算所有区域的区域活跃度。  
 
-![image-20230219203433957](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-g1%E6%9C%80%E7%BB%88%E6%A0%87%E8%AE%B0%E9%98%B6%E6%AE%B5.png)
+![image-20230219203433957](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-g1%E6%9C%80%E7%BB%88%E6%A0%87%E8%AE%B0%E9%98%B6%E6%AE%B5.png)
 
 **筛选回收阶段/复制清理阶段（Cleanup，STW）  **
 
 G1选择“活度”最低的区域，这些区域可以被最快地收集。然后与年轻的GC同时收集这些区域。这在日志中表示为**[GC pause (mixed)] **。因此，年轻代和老年代都是同时收集的。  
 
-![image-20230219203517850](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-g1%20%E5%A4%8D%E5%88%B6%E6%B8%85%E7%90%86%E9%98%B6%E6%AE%B5.png)
+![image-20230219203517850](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-g1%20%E5%A4%8D%E5%88%B6%E6%B8%85%E7%90%86%E9%98%B6%E6%AE%B5.png)
 
 **筛选回收阶段-(复制/清理)阶段之后  **
 
 选定的区域已被收集并压缩为图中所示的深蓝色区域和深绿色区域。  
 
-![image-20230219203627716](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E7%AD%9B%E9%80%89%E5%9B%9E%E6%94%B6%E9%98%B6%E6%AE%B5.png)
+![image-20230219203627716](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E7%AD%9B%E9%80%89%E5%9B%9E%E6%94%B6%E9%98%B6%E6%AE%B5.png)
 
 **总结:  **
 
@@ -2404,7 +2404,7 @@ jstat -gcutil 11666 1000 3
 
 11666为pid，每隔1000毫秒打印一次，打印3次  
 
-![image-20230220212217909](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jstat%E8%AF%A6%E7%BB%86.png)
+![image-20230220212217909](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jstat%E8%AF%A6%E7%BB%86.png)
 
 字段解释:
 	S0 survivor0使用百分比
@@ -2426,7 +2426,7 @@ jstat -gc 11666 1000 3
 -gc和-gcutil参数类似，只不过输出字段不是百分比，而是实际的值。
 输出  
 
-![image-20230220212327890](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jstat%E7%99%BE%E5%88%86%E6%AF%94.png)
+![image-20230220212327890](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jstat%E7%99%BE%E5%88%86%E6%AF%94.png)
 
 字段解释：
 	S0C survivor0大小
@@ -2651,7 +2651,7 @@ jmap -histo:live 11666 | more
 
 输出存活对象统计信息  
 
-![image-20230220214054601](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jmp.png)
+![image-20230220214054601](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jmp.png)
 
 
 
@@ -3004,19 +3004,19 @@ Heap
 
 这是一个在线分析日志的工具，主要功能是免费的，存在部分收费，地址：https://gceasy.io/把上篇生成的日志文件，上传分析，就会接到可视化界面  
 
-![image-20230221204911917](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-gc%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7gceasy.png)
+![image-20230221204911917](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-gc%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7gceasy.png)
 
 Allocated：各部分分配大小
 Peak：峰值内存使用量  
 
-![image-20230221204951958](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-gceasy2.png)
+![image-20230221204951958](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-gceasy2.png)
 
 吞吐量：99.536%，运行应用程序的时间/(GC时间的比值+运行应用程序的时间)
 平均GC停顿时间
 最大GC停顿时间
 GC停顿持续时间范围：时间范围、GC数量、百分百  
 
-![image-20230221205048513](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-gceasy3.png)
+![image-20230221205048513](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-gceasy3.png)
 
 左边菜单有很多：
 GC之前的堆、GC之后的堆、GC持续时间、GC停顿持续时间、回收的内存字节、Young区内存变化、Old区内存变化、Metaspace内存变化、分配对象大小、对象从Young到Old内存大小变化后序的内容有：GC统计信息、Minor GC/Full GC信息、内存泄漏、GC的原因等等，所以这个工具的功能真的很强大我们可以对比一下，Parallel、CMS、G1的GC效率。
@@ -3037,7 +3037,7 @@ tomcat服务器在JavaEE项目中使用率非常高，所以在生产环境对to
 
 https://tomcat.apache.org/download-80.cgi
 
-![image-20230223210912942](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E9%A1%B5%E9%9D%A2.png)
+![image-20230223210912942](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E9%A1%B5%E9%9D%A2.png)
 
 
 
@@ -3098,7 +3098,7 @@ vim tomcat-users.xml
 
 [官网地址](https://jmeter.apache.org/download_jmeter.cgi)
 
-![image-20230223215646528](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-jmeter%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80.png)
+![image-20230223215646528](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-jmeter%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80.png)
 
 
 
@@ -3123,7 +3123,7 @@ Nginx+tomcat的架构，都使用不上AJP协议，所以把AJP禁用，修改co
 
 重启tomcat即可。
 
-![image-20230223220120654](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F.png)
+![image-20230223220120654](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F.png)
 
 
 
@@ -3152,7 +3152,7 @@ Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
 <!-- A "Connector" using the shared thread pool-->
 ```
 
-![image-20230223220506041](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E4%BC%98%E5%8C%96maxThread%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E5%9B%BE%E7%89%87.png)
+![image-20230223220506041](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E4%BC%98%E5%8C%96maxThread%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E5%9B%BE%E7%89%87.png)
 
 在页面中显示最大线程数为-1，这个是正常的，仅仅是显示的问题，实际使用的指定的值
 通过设置线程池，调整线程池相关的参数进行测试tomcat的性能。
@@ -3190,7 +3190,7 @@ tomcat的运行模式有3种：
 <Connector executor="tomcatThreadPool" port="8080" protocol="org.apache.coyote.http11.Http11Nio2Protocol" connectionTimeout="20000" redirectPort="8443" />
 ```
 
-![image-20230223220856529](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E8%AE%BE%E7%BD%AEnio2.png)
+![image-20230223220856529](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E8%AE%BE%E7%BD%AEnio2.png)
 
 tomcat8之前的版本用的是BIO，推荐使用NIO，tomcat8中有最新的NIO2，速度更快，建议使用NIO2。  
 
@@ -3214,7 +3214,7 @@ JAVA_OPTS="-XX:+UseParallelGC -XX:+UseParallelOldGC -Xms64m -Xmx512m -XX:+PrintG
 vi catalina.sh：
 将jvm参数添加进去--设置年轻代和老年代的垃圾收集器均为ParallelGC并行垃圾收集器。不设置jdk8默认也是使用ParallelGC：  
 
-![image-20230223221141998](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E8%AE%BE%E7%BD%AE%E5%9B%9E%E6%94%B6%E5%99%A8.png)
+![image-20230223221141998](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E8%AE%BE%E7%BD%AE%E5%9B%9E%E6%94%B6%E5%99%A8.png)
 
 #### 5.2 查看gc日志文件
 
@@ -3222,11 +3222,11 @@ vi catalina.sh：
 
 问题一: 年轻代和老年代空间大小分配不合理, 具体如下图  
 
-![image-20230223221401633](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E8%B0%83%E4%BC%98%E6%A1%88%E4%BE%8B%E5%9B%BE1.png)
+![image-20230223221401633](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E8%B0%83%E4%BC%98%E6%A1%88%E4%BE%8B%E5%9B%BE1.png)
 
 问题二: 0-100事件范围内执行MinorGC 太多 
 
-![image-20230223221443272](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E8%B0%83%E4%BC%98%E6%A1%88%E5%88%97%E5%9B%BE2.png)
+![image-20230223221443272](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E8%B0%83%E4%BC%98%E6%A1%88%E5%88%97%E5%9B%BE2.png)
 
 从图中可以看到0-100 100-200毫秒的gc 发生了9次和4次, 时间短,频率高,说明年轻代空间分配不合理,我们可以尝试给年轻代分配空间,减少Minor GC 频率, 降低Pause GC事件,提高吞吐量.  
 
@@ -3234,7 +3234,7 @@ vi catalina.sh：
 
 问题三：下图中我们也能看到问题, Minor GC 发生了 14 次, Full GC 发生了2次。 Pause time 事件也较长。  
 
-![image-20230223221526932](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E8%B0%83%E4%BC%98%E6%A1%88%E4%BE%8B%E5%9B%BE3.png)
+![image-20230223221526932](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E8%B0%83%E4%BC%98%E6%A1%88%E4%BE%8B%E5%9B%BE3.png)
 
 #### 5.3 调整年轻代大小
 
@@ -3248,9 +3248,9 @@ JAVA_OPTS="-XX:+UseParallelGC -XX:+UseParallelOldGC -Xms512m -Xmx512m -XX:NewRat
 
 #### 5.4 查看GC日志  
 
-![image-20230223221736048](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E8%B0%83%E4%BC%98%E5%90%8E%E5%9B%BE1.png)
+![image-20230223221736048](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E8%B0%83%E4%BC%98%E5%90%8E%E5%9B%BE1.png)
 
-![image-20230223221757665](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomcat%E8%B0%83%E4%BC%98%E5%90%8E%E5%9B%BE2.png)
+![image-20230223221757665](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomcat%E8%B0%83%E4%BC%98%E5%90%8E%E5%9B%BE2.png)
 
 **结论：吞吐量保持在97%以上，同时Minor GC次数明显减少，停顿次数减少  **
 
@@ -3265,7 +3265,7 @@ JAVA_OPTS="-XX:+UseParallelGC -XX:+UseParallelOldGC -Xms512m -Xmx512m -XX:NewRat
 JAVA_OPTS="-XX:+UseG1GC -XX:MaxGCPauseMillis=100 -Xms512m -Xmx512m -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:+PrintHeapAtGC -Xloggc:../logs/gc.log"
 ```
 
-![image-20230223221921033](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-tomat%E4%BD%BF%E7%94%A8G1%E6%94%B6%E9%9B%86%E5%99%A8%E7%BB%93%E8%AE%BA1.png)
+![image-20230223221921033](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-tomat%E4%BD%BF%E7%94%A8G1%E6%94%B6%E9%9B%86%E5%99%A8%E7%BB%93%E8%AE%BA1.png)
 
 由上图可以看到吞吐量上升, GC执行次数降低.  
 
@@ -3293,7 +3293,7 @@ Java内存模型的主要目标：**定义程序中各个变量的访问规则�
 
 Java内存模型规定了**所有的变量都存储在主内存（Main Memory）**
 
-![image-20230226115040336](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E4%B8%BB%E5%86%85%E5%AD%98%E5%92%8C%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AD%98%E5%9B%BE.png)
+![imgjvm-主内存和工作内存图](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E4%B8%BB%E5%86%85%E5%AD%98%E5%92%8C%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AD%98%E5%9B%BE.png)
 
 
 
@@ -3425,7 +3425,7 @@ this逃逸： 是表示为final修饰的变量，在构造器中通过this进行
 
 
 
-![image-20211012114330991-16346333160091](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/img202110201040490.png)
+![image-20211012114330991-16346333160091](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/img202110201040490.png)
 
 
 
@@ -3569,7 +3569,7 @@ HotSpot虚拟机的对象头分成两个部分：
 
 简单地介绍了对象的内存布局后，我们把话题返回到轻量级锁的执行过程上。在代码进入同步块的时候，如果此同步对象没有被锁定（锁标志位为“01”状态），虚拟机首先将在当前线程的栈帧中建立一个名为锁记录（LockRecord）的空间，用于存储锁对象目前的MarkWord的拷贝（官方把这份拷贝加了一个Displaced前缀，即DisplacedMarkWord），这时候线程堆栈与对象头的状态。
 
-![image-20230226211130805](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-markword%E6%8B%B7%E8%B4%9D.png)
+![image-20230226211130805](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-markword%E6%8B%B7%E8%B4%9D.png)
 
 
 
@@ -3579,7 +3579,7 @@ HotSpot虚拟机的对象头分成两个部分：
 
 然后，虚拟机将使用CAS操作尝试将对象的MarkWord更新为指向LockRecord的指针。如果这个更新动作成功了，那么这个线程就拥有了该对象的锁，并且对象MarkWord的锁标志位（MarkWord的最后2bit）将转变为“00”，即表示此对象处于轻量级锁定状态，这时候线程堆栈与对象头的状态。
 
-![image-20230226211211255](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E8%8E%B7%E5%8F%96%E5%88%B0%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81.png)
+![image-20230226211211255](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E8%8E%B7%E5%8F%96%E5%88%B0%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81.png)
 
 如果这个更新操作失败了，虚拟机首先会检查对象的MarkWord是否指向当前线程的栈帧，如果只说明当前线程已经拥有了这个对象的锁，那就可以直接进入同步块继续执行，否则说明这个锁对象已经被其他线程抢占了。如果有两条以上的线程争用同一个锁，那轻量级锁就不再有效，要膨胀为重量级锁，锁标志的状态值变为“10”，MarkWord中存储的就是指向重量级锁（互斥量）的指针，后面等待锁的线程也要进入阻塞状态。
 
@@ -3595,7 +3595,7 @@ HotSpot虚拟机的对象头分成两个部分：
 
 当有另外一个线程去尝试获取这个锁时，偏向模式就宣告结束。根据锁对象目前是否处于被锁定的状态，撤销偏向（RevokeBias）后恢复到未锁定（标志位“01”）或轻量级锁定（标志位为“00”）的状态，后续的同步操作就如上面介绍的轻量级锁那样执行。偏向锁、轻量级锁的状态转化及对象MarkWord如下图所示。
 
-![image-20230226210623510](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E5%81%8F%E5%90%91%E9%94%81%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230226210623510](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E5%81%8F%E5%90%91%E9%94%81%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 
 
@@ -3603,4 +3603,4 @@ HotSpot虚拟机的对象头分成两个部分：
 
 大致为无锁-->偏向锁---->轻量级锁---->重量级锁
 
-![image-20230226212022106](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/imgjvm-%E9%94%81%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20230226212022106](https://lhf-note.oss-cn-hangzhou.aliyuncs.com/jvm/imgjvm-%E9%94%81%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
