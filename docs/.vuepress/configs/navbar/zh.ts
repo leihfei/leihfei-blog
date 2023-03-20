@@ -78,7 +78,7 @@ export const navbarZh: NavbarConfig = [
 			{
 				text: 'spring',
 				children: [
-					'/middleware/spring/spring相关',
+					'/middleware/spring/spring',
 					'/middleware/spring/spring-boot'
 				]
 			}
