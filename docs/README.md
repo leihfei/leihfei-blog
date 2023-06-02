@@ -12,6 +12,6 @@ features:
   details: 学习总爱忘记，好记性不如烂笔头。
 - title: 生活点点滴滴
   details: 记录生活中美好的时刻，把生命中的点点滴滴都堆积成无法比拟的幸福。
-
-footer: Hep Licensed | Copyright ©[黔ICP备18006718号-1](https://beian.miit.gov.cn/)
 ---
+Hep Licensed | Copyright ©[黔ICP备18006718号-1](https://beian.miit.gov.cn/)
+
